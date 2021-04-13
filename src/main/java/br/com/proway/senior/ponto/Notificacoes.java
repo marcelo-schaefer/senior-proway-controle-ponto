@@ -3,6 +3,9 @@
  */
 package br.com.proway.senior.ponto;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Módulo de Notificações -
  * 
@@ -24,13 +27,14 @@ public class Notificacoes {
 	 */
 	public boolean enviarNotificacao(String destination, String message) {
 		if (checarDestinatario(destination) && checarValidadeMensagem(message)) {
-			System.out.println("Notificação enviada para " + destination + "!");
-			System.out.println("Mensagem: "+message);
-			// Código que envia/mostra a notificação ao perfil do usuário aqui.
+			//System.out.println("Notificação enviada para " + destination + "!");
+			//System.out.println("Mensagem: "+message);
+			
+			// Código que DE FATO envia/mostra a notificação ao perfil do usuário aqui.
+			
 			return true;
 		}
-		
-		System.out.println("Notificação não enviada!");
+		//System.out.println("Notificação não enviada!");
 		return false;
 	}
 	
@@ -44,9 +48,16 @@ public class Notificacoes {
 	 */
 	public static boolean checarDestinatario(String destination) {
 		// Se o destinatário existe na lista de usuários registrados...
-		if(destination != null) return true;
+		
+		String[] arr = {"Tester Testerson", "Dummy", "Bot", "123456"};
+		List<String> validUsers = Arrays.asList(arr); //Testando - Remover quando tivermos acesso ao db
+		
+		if( destination != null &&
+			validUsers.contains(destination)) {
+			return true;
+		}
 		else {
-			System.out.println("Destinatário inválido, certifique-se que o usuário existe.");
+			//System.out.println("Destinatário inválido, certifique-se que o usuário existe.");
 			return false;
 		}
 	}
@@ -67,7 +78,7 @@ public class Notificacoes {
 			return true;
 		}
 		else {
-			System.out.println("Mensagem em formato inválido!");
+			// System.out.println("Mensagem em formato inválido!");
 			return false;
 		}
 	}
