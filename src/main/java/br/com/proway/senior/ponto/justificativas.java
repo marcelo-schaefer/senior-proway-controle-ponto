@@ -1,4 +1,4 @@
-package afastamento;
+package br.com.proway.senior.ponto;
 
 import java.util.Scanner;
 import java.util.Calendar;
