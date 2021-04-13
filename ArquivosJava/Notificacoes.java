@@ -6,6 +6,7 @@ public class Notificacoes {
 	public boolean enviarNotificacao(String destination, String message) {
 		if (checarDestinatario(destination) && checarValidadeMensagem(message)) {
 			System.out.println("Notificação enviada para " + destination + "!");
+			System.out.println("Mensagem: "+message);
 			// Código que envia/mostra a notificação ao perfil do usuário aqui.
 			return true;
 		}
@@ -15,7 +16,7 @@ public class Notificacoes {
 	}
 	
 	public static boolean checarDestinatario(String destination) {
-		// Se o destinatário existe
+		// Se o destinatário existe na lista de usuários registrados...
 		if(destination != null) return true;
 		else {
 			System.out.println("Destinatário inválido, certifique-se que o usuário existe.");

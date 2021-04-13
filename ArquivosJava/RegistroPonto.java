@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,15 +12,17 @@ public class RegistroPonto {
 
 	// salva em lista a hora que bateu o ponto
 	public ArrayList<LocalDateTime> armazenaHora(int id, LocalDateTime hora) {
-		ArrayList<LocalDateTime> horas = new ArrayList<>();
+		ArrayList<LocalDateTime> horas = new ArrayList<>(); // Acessar essa lista de fora, na posição com id.
 		horas.add(hora);
 		return horas;
 	}
 
-	// calcula a quantidade de horas em rela��o aos 4 pontos batidos diariamente e
+	// calcula a quantidade de horas em rela��o aos 4 pontos batidos diariamente e
 	// retorna este valor
 	public LocalDateTime horasTrabalhadas(LocalDateTime hora1, LocalDateTime hora2, LocalDateTime hora3,
 			LocalDateTime hora4) {
+		// Aqui estamos calculando as horas usando apenas 4 pontos, a função pode ser generalizada (verificar necessidade disso)
+		// se usarmos como argumento uma lista de LocalDateTimes, como a que vamos acessar na funcao armazenaHora()
 		RegistroPonto classe = new RegistroPonto();
 
 		Duration manha = Duration.between(hora1, hora2);
@@ -35,6 +38,12 @@ public class RegistroPonto {
 		LocalDate hoje = LocalDate.now();
 
 		LocalDateTime retorno = LocalDateTime.of(hoje.getYear(), hoje.getMonth(), hoje.getDayOfMonth(), h, m, s);
+		
+		DateTimeFormatter apenasHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+		String retornoString = hoje.format(apenasHora);
+		// Talvez formatar essa data para remover as informações de dia, mes e ano. Manter apenas tempo.
+		// Usando o método format do LocalDate que resulta uma string. A gente pode usar o split para pegar as unidades de tempo.
+		
 		return retorno;
 
 	}
@@ -42,7 +51,7 @@ public class RegistroPonto {
 	// passa o tempo trabalhado do dia e transforma em minutos, por double, retorna
 	// este valor
 	public double calculoHorasTrabalhadas(Duration primeiraParte, Duration segundaParte) {
-
+		// Aqui a gente retorna em minutos, e no metodo de cima a gente retorna em LocalDatetime
 		long i = primeiraParte.toMinutes();
 		long j = segundaParte.toMinutes();
 		long junsao = i + j;
@@ -56,11 +65,12 @@ public class RegistroPonto {
 		String local;
 
 		switch (formaDoPonto) {
+		// Depois podemos criar um ENUM para os possíveis cases
 		case "biometria":
 			local = "empresa";
 			break;
 
-		case "senha n�o digital":
+		case "senha n�o digital":
 			local = "empresa";
 			break;
 
@@ -77,6 +87,7 @@ public class RegistroPonto {
 
 	// verifica se a impressora possue papel, retorna true ou false
 	public boolean retornoImpressora(boolean papel) {
+		// Papel nao é argumento, a funcao vai usar métodos internos da impressora para fazer a checagem
 		boolean impressora;
 		if (papel) {
 			impressora = true;
@@ -88,8 +99,8 @@ public class RegistroPonto {
 
 	// confere com a lista de senhas gerais, e retorna se possue ou nao
 	public boolean verificacaoSenhaBancoDeDados(Integer senha) {
-
 		boolean contem = false;
+		
 		ArrayList<Integer> todasSenhas = new ArrayList<>();
 		for (Integer i : todasSenhas) {
 			if (i == senha) {
