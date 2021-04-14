@@ -1,4 +1,4 @@
-package ferramentas;
+package br.com.proway.senior.ponto.ferramentas;
 
 public class RetornoDaImpressora {
 

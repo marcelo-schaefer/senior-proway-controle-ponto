@@ -1,4 +1,4 @@
-package ferramentas;
+package br.com.proway.senior.ponto.ferramentas;
 
 import java.time.Duration;
 
@@ -10,8 +10,8 @@ public class CalculoHorasTrabalhadasEmMinutos {
 	 * o metodo recebe duas duracoes, pega em minutos as duas, passa para long, soma
 	 * as duas e passa para double
 	 * 
-	 * @param Duration primeiraParte, duração entre o primeiro ponto e o segundo
-	 * @param Duration segundaParte, duração entre o terceiro ponto e o quarto
+	 * @param Duration primeiraParte, duraï¿½ï¿½o entre o primeiro ponto e o segundo
+	 * @param Duration segundaParte, duraï¿½ï¿½o entre o terceiro ponto e o quarto
 	 * @return double minutos, soma das duracoes das duas etapas
 	 */
 
