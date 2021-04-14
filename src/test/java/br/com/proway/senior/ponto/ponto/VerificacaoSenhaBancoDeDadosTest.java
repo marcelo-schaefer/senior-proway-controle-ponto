@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import br.com.proway.senior.ponto.VerificacaoSenhaBancoDeDados;
+
 public class VerificacaoSenhaBancoDeDadosTest {
 
 	@Test
