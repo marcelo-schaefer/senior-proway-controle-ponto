@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import br.com.proway.senior.ponto.LocalizadorParaPonto;
+import br.com.proway.senior.ponto.ferramentas.LocalizadorParaPonto;
 
 public class LocalizadorParaPontoTest {
 

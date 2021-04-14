@@ -1,4 +1,4 @@
-package br.com.proway.senior.ponto;
+package br.com.proway.senior.ponto.ferramentas;
 
 public class LocalizadorParaPonto {
 
@@ -16,7 +16,7 @@ public class LocalizadorParaPonto {
 	public String localizacaoDoPonto(String localizacao, String formaDoPonto) {
 		String local;
 
-		switch (formaDoPonto) {
+		switch (formaDoPonto) { //TODO: Devem estar em um ENUM
 		case "biometria":
 			local = "empresa";
 			break;

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import br.com.proway.senior.ponto.VerificacaoSenhaBancoDeDados;
+import br.com.proway.senior.ponto.ferramentas.VerificacaoSenhaBancoDeDados;
 
 public class VerificacaoSenhaBancoDeDadosTest {
 
