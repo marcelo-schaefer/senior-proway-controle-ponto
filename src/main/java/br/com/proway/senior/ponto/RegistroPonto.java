@@ -1,4 +1,4 @@
-package br.com.proway.senior.controle;
+package br.com.proway.senior.ponto;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

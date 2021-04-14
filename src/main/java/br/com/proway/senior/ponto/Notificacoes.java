@@ -20,7 +20,7 @@ public class Notificacoes {
 	 * <h1> enviarNotificacao </h1> 
 	 * Responsável por enviar uma mensagem em formato de string para um usuário representado por um identificador.
 	 * A função checa a existência do usuário e se a mensagem atende aos requerimentos do sistema.
-	 * 
+	 *
 	 * @param destination String Identificador da pessoa que vai receber a notificação.
 	 * @param message String Mensagem a ser enviada. 
 	 * @return boolean representando o sucesso da operação (true/false)
