@@ -1,4 +1,4 @@
-package br.com.proway.senior.ponto;
+package br.com.proway.senior.controle;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -8,12 +8,17 @@ import java.time.format.DateTimeFormatter;
 
 public class RegistroPonto {
 
+	/**
+	 O método de validaçãoHours Notifificacao foi incorporado nos outros métodos para a realização dos testes,
+	 * por essa razão tem os 4 principais métodos comentados.
+	 * 
+	 */
 	public static void main(String[] args) throws UnknownHostException {
-		insereUsuario();
-		horaEntrada();
-		saidaAlmoco();
-		retornoAlmoco();
-		horaSaida();
+		inserirUsuario();
+//		horaEntrada();
+//		saidaAlmoco();
+//		retornoAlmoco();
+//		horaSaida();
 		validacaoHorasNotificacao(horaEntrada(), saidaAlmoco(), retornoAlmoco(), horaSaida());
 		ipLocalNomeMaquina();
 	}
@@ -24,12 +29,14 @@ public class RegistroPonto {
 	static LocalDateTime saida;
 	static LocalDateTime horaSaidaAlmoco;
 	static LocalDateTime horaRetornoAlmoco;
+	static Duration duracao = Duration.ZERO;
 	static int chDia = 8;
 	static int horaAlmoco = 1;
 
 	static String usuario = "1234";
 
-	static String insereUsuario() {
+	static String inserirUsuario() {
+		System.out.println("Usuário: " + usuario);
 		return usuario;
 	}
 
@@ -43,10 +50,8 @@ public class RegistroPonto {
 	 */
 	static String horaEntrada() {
 		entrada = LocalDateTime.of(2021, 4, 13, 8, 00, 00); // Data/hora estáticos entrada
-		System.out.println(entrada);
+		System.out.println("Registro Entrada: " + entrada);
 		String horarioEntFormatado = entrada.toString();
-		// System.out.println("Horário de entrada: " + entrada.format(formatter) +
-		// "\n");
 		return horarioEntFormatado;
 	}
 
@@ -60,20 +65,37 @@ public class RegistroPonto {
 	 */
 	static String saidaAlmoco() {
 		horaSaidaAlmoco = LocalDateTime.of(2021, 4, 13, 12, 00, 00); // Data/hora estáticos entrada
-		System.out.println(horaSaidaAlmoco);
+		System.out.println("Hora saida almoço: " + horaSaidaAlmoco);
 		String horaSaidaAlmocoForm = horaSaidaAlmoco.toString();
 		return horaSaidaAlmocoForm;
 	}
 
+	/**
+	 * Registra o horário de retorno à empresa após o almoço
+	 * 
+	 * Este método insere no sistema o horário de chegada do funcionário na empresa após o almoço
+	 * logo que o mesmo insere o seu cartão de identificação no aparelho identificador
+	 * 
+	 * @return horário em que se bate o ponto no retorno do funcionário à empresa após o almoço
+	 */
 	static String retornoAlmoco() {
 		horaRetornoAlmoco = LocalDateTime.of(2021, 4, 13, 13, 00, 00); // Data/hora estáticos entrada
+		System.out.println("Hora Retorno almoço: " + horaRetornoAlmoco);
 		String retornoAlmocoForm = horaRetornoAlmoco.toString();
 		return retornoAlmocoForm;
 	}
 
+	/**
+	 * Registra hora de Saída
+	 * 
+	 * Este método insere uma hora de saída logo que o usuário insere o seu cartão
+	 * de identificação no aparelho identificador
+	 * 
+	 * @return valor da hora em que se registra o ponto
+	 */
 	static String horaSaida() {
 		saida = LocalDateTime.of(2021, 4, 13, 18, 00, 00); // Data/hora estáticos saída
-		System.out.println(saida);
+		System.out.println("Registro saida: " + saida + "\n");
 		// System.out.println("Horário de saída: " + saida.format(formatter) + "\n");
 		String horaSaidaForm = saida.toString();
 		return horaSaidaForm;
@@ -109,59 +131,70 @@ public class RegistroPonto {
 //
 //		}
 
+	/**
+	 * 
+	 * Método responsável por validar se o horário de saída foi registrado, se o ponto foi batido consecutivamente (margem de 5 min),
+	 * se bateu o ponto final antes das 8h trabalhadas ou se ele cumpriu todo o horário de trabalho (tendo ou não horas extras)
+	 * 
+	 * @param horaEntrada String informa o horário de entrada do usuário
+	 * @param saidaAlmoco String informa o horário de saída do usuário para almoço
+	 * @param retornoAlmoco String informa o horário de retorno ao local de trabalho do usuário após o almoço
+	 * @param horaSaida String informa o horário de saída do usuário da empresa após o fim da jornada de trabalho
+	 * @return
+	 */
 	static String validacaoHorasNotificacao(String horaEntrada, String saidaAlmoco, String retornoAlmoco,
 			String horaSaida) {
-		Duration duracao = Duration.ZERO;
-
-		/* Caso o usuário tenha esquecido de bater o ponto na saída */
-		if (horaSaida == null) {
+		
+		if (saidaAlmoco == null || horaSaida == null) {
 			String faltandoSaida = "Você não bateu o seu registro de saída";
 			return faltandoSaida;
 		}
 
-		if (horaSaida != null) {
-
+		if (horaSaida != null && saidaAlmoco != null) {
+			
 			duracao = Duration.between(entrada, horaSaidaAlmoco);
 			System.out.println("Horas manhã: " + duracao.toHours() + "\n");
 
+			
 			duracao = Duration.between(horaRetornoAlmoco, saida);
 			System.out.println("Horas tarde: " + duracao.toHours() + "\n");
 
 			duracao = Duration.between(entrada, saida);
 			System.out.println("Resultado total de horas no dia: " + (duracao.toHours() - horaAlmoco + "\n"));
 
-			System.out.println("Resultado horas extras/banco de horas: ");
-//				System.out.println(duracao.toHours());
-//				System.out.println(chDia);
-//				System.out.println(horaAlmoco);
+			System.out.print("Resultado horas extras/banco de horas: ");
 			System.out.println(duracao.toHours() - chDia - horaAlmoco + "\n");
 
 			String dadosEntradaSaida = "Cálculo de horas foi feito com sucesso!";
 			return dadosEntradaSaida;
 		}
 
-		/* Caso o usuário bata o ponto consecutivamente (antes dos 5 minutos) */
 		if (duracao.toMinutes() < 5 && saida.getHour() != 0) {
 			String pontoConsecutivo = "Você bateu o ponto consecutivamente";
 			return pontoConsecutivo;
 		}
 
-		/* Caso o usuário tenha batido o ponto antes das 8 horas */
 		else if (duracao.toHours() < 8 && saida.getHour() != 0) {
 			String horarioIncompleto = "Você não cumpriu seu horário de trabalho do dia";
 			return horarioIncompleto;
 		}
 
-		/* Caso o usuário tenha cumprido as 8 horas trabalhadas e passado delas */
 		else if (duracao.toHours() >= 8) {
 			System.out.println("Parabéns! Você cumpriu sua jornada!!" + "\n");
 
 			String horasCompletas = "Parabéns! Você cumpriu sua jornada!!";
 			return horasCompletas;
 		}
-		return null; // Caso não acesse nenhum método, ocorreu algum problema
+		return null;
 	}
 
+	/**
+	 * Registra Ip e Nome máquina.
+	 * 
+	 * Este método irá registrar o IP e nome de sua máquina para futuras analises que necessários.
+	 * 
+	 * @return Retorna valor do IP e Nome da maquina do usuário.
+	 */
 	static void ipLocalNomeMaquina() throws UnknownHostException {
 		/* Ip da maquina */
 		String ipMaquina = InetAddress.getLocalHost().getHostAddress();
@@ -173,7 +206,7 @@ public class RegistroPonto {
 	}
 
 	// recebe local e como foi feito o ponto, retorna o local de onde foi
-	public String localizacaoDoPonto(String localizacao, String formaDoPonto) {
+	static String localizacaoDoPonto(String localizacao, String formaDoPonto) {
 		String local;
 		switch (formaDoPonto) {
 		case "empresa":
