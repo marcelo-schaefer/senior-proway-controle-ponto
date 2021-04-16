@@ -1,37 +1,47 @@
 package br.com.proway.senior.ponto.camadaEntidade;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+
 
 public class Ponto {
-
+	private int id;
+	private TipoDePonto tipoDePonto;
 	private LocalDateTime data;
 	private String localizacao;
-	private ArrayList<LocalDateTime> pontosDiarios;
-	private TipoDePonto tipoPonto;
-
-	public String getLocalizacao() {
-		return localizacao;
+	//ArrayList<PontoDiario> pontosDiarios; quem fez isso?
+	
+	public enum TipoDePonto {
+		APLICATIVO_WEB,
+		TERMINAL_CRACHA,
+		TERMINAL_BIOMETRIA,
+		TERMINAL_SENHA;
 	}
+	
+	
 
-	public void setLocalizacao(String localizacao) {
+	public Ponto(int id, TipoDePonto tipoDePonto, LocalDateTime data, String localizacao) {
+		super();
+		this.id = id;
+		this.tipoDePonto = tipoDePonto;
+		this.data = data;
 		this.localizacao = localizacao;
 	}
 
-	public ArrayList<LocalDateTime> getPontosDiarios() {
-		return pontosDiarios;
+	public int getId() {
+		return id;
 	}
 
-	public void setPontosDiarios(ArrayList<LocalDateTime> pontosDiarios) {
-		this.pontosDiarios = pontosDiarios;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public TipoDePonto getTipoPonto() {
-		return tipoPonto;
+	public TipoDePonto getTipoDePonto() {
+		return tipoDePonto;
 	}
 
-	public void setTipoPonto(TipoDePonto tipoPonto) {
-		this.tipoPonto = tipoPonto;
+	public void setTipoDePonto(TipoDePonto tipoDePonto) {
+		this.tipoDePonto = tipoDePonto;
+
 	}
 
 	public LocalDateTime getData() {
@@ -42,4 +52,15 @@ public class Ponto {
 		this.data = data;
 	}
 
+
+	public String getLocalizacao() {
+		return localizacao;
+	}
+
+	public void setLocalizacao(String localizacao) {
+		this.localizacao = localizacao;
+	}
+	
+	
 }
+
