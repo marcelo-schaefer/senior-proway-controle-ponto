@@ -7,6 +7,8 @@ public class Justificativa {
 	private String data;
 	private String msg;
 	private String img;
+	private StatusJustificativa status;
+	
 	
 	private ArrayList<String> dados = new ArrayList<String>();
 
@@ -49,6 +51,40 @@ public class Justificativa {
 	public void setDados(ArrayList<String> dados) {
 		this.dados = dados;
 	}
+	
+	public StatusJustificativa getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusJustificativa status) {
+		this.status = status;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Justificativa other = (Justificativa) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
 	
 	
 	
