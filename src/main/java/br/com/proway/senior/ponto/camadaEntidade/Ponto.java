@@ -1,28 +1,27 @@
 package br.com.proway.senior.ponto.camadaEntidade;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 public class Ponto {
 	private int id;
-	private TipoDePonto tipoDePonto;
-	private LocalDateTime data;
+	private tipo tipo;
+	private Date data;
 	private String localizacao;
-	//ArrayList<PontoDiario> pontosDiarios; quem fez isso?
+	private LocalDateTime horario;
 	
-	public enum TipoDePonto {
+	public enum tipo {
 		APLICATIVO_WEB,
 		TERMINAL_CRACHA,
 		TERMINAL_BIOMETRIA,
 		TERMINAL_SENHA;
 	}
 	
-	
-
-	public Ponto(int id, TipoDePonto tipoDePonto, LocalDateTime data, String localizacao) {
+	public Ponto(int id, tipo tipo, Date data, String localizacao) {
 		super();
 		this.id = id;
-		this.tipoDePonto = tipoDePonto;
+		this.tipo = tipo;
 		this.data = data;
 		this.localizacao = localizacao;
 	}
@@ -35,20 +34,20 @@ public class Ponto {
 		this.id = id;
 	}
 
-	public TipoDePonto getTipoDePonto() {
-		return tipoDePonto;
+	public tipo gettipo() {
+		return tipo;
 	}
 
-	public void setTipoDePonto(TipoDePonto tipoDePonto) {
-		this.tipoDePonto = tipoDePonto;
+	public void settipo(tipo tipo) {
+		this.tipo = tipo;
 
 	}
 
-	public LocalDateTime getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(LocalDateTime data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
@@ -61,6 +60,13 @@ public class Ponto {
 		this.localizacao = localizacao;
 	}
 	
+	public LocalDateTime getHorario() {
+		return horario;
+	}
+
+	public void setHorario(LocalDateTime horario) {
+		this.horario = horario;
+	}
 	
 }
 
