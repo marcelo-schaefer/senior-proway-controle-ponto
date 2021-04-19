@@ -12,6 +12,16 @@ public class Justificativa {
 	
 	private ArrayList<String> dados = new ArrayList<String>();
 
+	public Justificativa(Integer id, String data, String msg, String img) {
+		this.id = id;
+		this.data = data;
+		this.msg = msg;
+		this.img = img;
+	}
+	
+	public Justificativa() {
+	}
+	
 	@Override
 	public String toString() {
 		
