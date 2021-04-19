@@ -1,15 +1,95 @@
 package br.com.proway.senior.ponto.camadaLogica;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
+
+import br.com.proway.senior.ponto.camadaEntidade.Colaborador;
 import br.com.proway.senior.ponto.camadaEntidade.Pessoa;
+import br.com.proway.senior.ponto.camadaEntidade.Ponto;
+
 
 public class NotificacaoLogica {
 
-	Pessoa entidadePessa;
+	Pessoa entidadePessoa;
+	Ponto entidadePonto;
+	Colaborador entidadeColaborador;
 
 	public NotificacaoLogica(Pessoa pessoa) {
-		this.entidadePessa = pessoa;
+		this.entidadePessoa = pessoa;
+	}
+	
+	public NotificacaoLogica(Ponto ponto) {
+		this.entidadePonto = ponto;
+	}
+	
+	public NotificacaoLogica(Colaborador colaborador) {
+		this.entidadeColaborador = colaborador;
+	}
+	
+	/***
+	 * <h1>Valida a jornada de trabalho</h1>
+	 * </br>
+	 * Verifica se a quantidade de pontos de uma jornada eh par ou impar
+	 * e se a quantidade de horas do colaborador foi devidamente cumprida.
+	 * @param listaColaborador ArrayList<Colaborador>, referente aos colaboradores a serem consultados
+	 * @return ArrayList<Pessoa>
+	 */
+	public ArrayList<Colaborador> validaJornadaDeTrabalho(ArrayList<Colaborador> listaColaborador) {
+		LocalDate data1 = LocalDate.of(2021, 04, 19);
+		LocalDateTime entrada;
+		LocalDateTime saida;
+		long minutos = 0;
+		
+		for(Colaborador colaborador: listaColaborador) {
+			ArrayList<Ponto> listaPontos = pegarJornadaPorColaboradorEData(colaborador, data1);
+			if(listaPontos.size() % 2 == 0) {
+				/* Verifica se concluiu a jornada de trabalho*/
+				for(Ponto pontoEntrada: listaPontos) {
+						entrada = pontoEntrada.getHorario();
+						listaPontos.remove(listaPontos.indexOf(pontoEntrada));
+						for(Ponto pontoSaida : listaPontos) {
+							saida = pontoSaida.getHorario();
+							listaPontos.remove(listaPontos.indexOf(pontoSaida));
+						}
+						//minutos = ChronoUnit.MINUTES(entrada, saida);
+						
+						//calculamos o intervalo em minutos e inserimos na nossa variável minutos
+						//break e o ciclo repete
+					
+				}
+				
+			} else {
+				/*Mandar notificação ao usuário
+				 * Bater o ponto para o rh depois alterar*/
+			}
+		}
+		ArrayList<Colaborador> aa = new ArrayList<Colaborador>();
+		return aa;
+	}
+	
+	public ArrayList<Ponto> ordenarPontosPorData(ArrayList<Ponto> listaPonto){
+		ArrayList<Ponto> aa = new ArrayList<Ponto>();
+		return aa;
+	}
+	
+	/***
+	 * <h1>Pegar jornada de trabalho por colaborador e data</h1>
+	 * </br>
+	 * Retorna uma lista de pontos do colaborador informado referente
+	 * a data informada.
+	 * 
+	 * @param colaborador Colaborador, referente ao colaborador a serconsultado.
+	 * @param data LocalDate, referente a data informada.
+	 * @return ArrayList<Ponto> referente aos pontos.
+	 */
+	public ArrayList<Ponto> pegarJornadaPorColaboradorEData(Colaborador colaborador, LocalDate data){
+		ArrayList<Ponto> aa = new ArrayList<Ponto>();
+		return aa;
 	}
 
 	/**
