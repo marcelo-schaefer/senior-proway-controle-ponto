@@ -8,7 +8,6 @@ public class HistoricoMensal<T> {
 	private int mes;
 
 	public HistoricoMensal(List<T> objetos, int ano, int mes) {
-		super();
 		this.objetos = objetos;
 		this.ano = ano;
 		this.mes = mes;
