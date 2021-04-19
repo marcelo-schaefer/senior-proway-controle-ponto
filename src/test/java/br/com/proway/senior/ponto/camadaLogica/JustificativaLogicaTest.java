@@ -81,16 +81,32 @@ public class JustificativaLogicaTest {
 			minhaJustificativa.entidadeJustificativa.setData("16/04/2020");
 			minhaJustificativa.entidadeJustificativa.setMsg("Teste mensagem");
 			minhaJustificativa.entidadeJustificativa.setImg("Teste imagem");
+			
+			
 			StatusJustificativa statusTest = StatusJustificativa.PENDENTE;
+			
 			minhaJustificativa.entidadeJustificativa.setStatus(statusTest);
+			
 			ArrayList<Justificativa> testeArray = new ArrayList<Justificativa>();
+			
 			testeArray.add(minhaJustificativa.entidadeJustificativa);
 			
-			String infoIdTest = "1";
-			String infoDataTest = "16/04/2020";
-			String infoMsgTest = "Teste mensagem";		//Pré-definição de dados para teste de retorno de método
-			String infoDataImg = "Teste imagem";
-			String infoStatusTest = "PENDENTE";
+			minhaJustificativa.entidadeJustificativa.setId(2);
+			minhaJustificativa.entidadeJustificativa.setData("17/04/2020");
+			minhaJustificativa.entidadeJustificativa.setMsg("Teste mensagem2");
+			minhaJustificativa.entidadeJustificativa.setImg("Teste imagem2");
+			
+			StatusJustificativa statusTest2 = StatusJustificativa.APROVADO;
+			
+			minhaJustificativa.entidadeJustificativa.setStatus(statusTest2);
+			
+			testeArray.add(minhaJustificativa.entidadeJustificativa);
+			
+			String infoIdTest = "2";
+			String infoDataTest = "17/04/2020";
+			String infoMsgTest = "Teste mensagem2";		//Pré-definição de dados para teste de retorno de método
+			String infoDataImg = "Teste imagem2";
+			String infoStatusTest = "APROVADO";
 			
 			ArrayList<String> dadosRecebidos = new ArrayList<String>();
 			dadosRecebidos.add(infoIdTest+" "+infoDataTest + " " + infoMsgTest + " " + infoDataImg +" "+infoStatusTest);
