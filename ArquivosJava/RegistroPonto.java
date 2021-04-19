@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package br.com.proway.senior.teste;
 
 import java.time.Duration;
@@ -132,6 +133,8 @@ public class RegistroPonto {
 	}
 }
 =======
+=======
+>>>>>>> refactorOO
 package br.com.proway.senior.teste;
 
 import java.time.Duration;
@@ -264,4 +267,7 @@ public class RegistroPonto {
 
 	}
 }
+<<<<<<< HEAD
+>>>>>>> refactorOO
+=======
 >>>>>>> refactorOO

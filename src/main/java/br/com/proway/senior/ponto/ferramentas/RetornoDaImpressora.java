@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package br.com.proway.senior.ponto.ferramentas;
 
 public class RetornoDaImpressora {
@@ -23,6 +24,8 @@ public class RetornoDaImpressora {
 	}
 }
 =======
+=======
+>>>>>>> refactorOO
 package br.com.proway.senior.ponto.ferramentas;
 
 public class RetornoDaImpressora {
@@ -46,4 +49,7 @@ public class RetornoDaImpressora {
 		return impressora;
 	}
 }
+<<<<<<< HEAD
+>>>>>>> refactorOO
+=======
 >>>>>>> refactorOO

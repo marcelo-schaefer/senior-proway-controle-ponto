@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * 
  */
+=======
+>>>>>>> refactorOO
 =======
 >>>>>>> refactorOO
 package br.com.proway.senior.ponto;
@@ -18,6 +21,10 @@ import java.util.List;
  */
 public class Notificacoes {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	
+>>>>>>> refactorOO
 =======
 	
 >>>>>>> refactorOO
@@ -47,7 +54,11 @@ public class Notificacoes {
 	
 	/**
 <<<<<<< HEAD
+<<<<<<< HEAD
 	 * <h1> checarDestinatario </h1> 
+=======
+	 * <h1>ChecarDestinatario</h1> 
+>>>>>>> refactorOO
 =======
 	 * <h1>ChecarDestinatario</h1> 
 >>>>>>> refactorOO

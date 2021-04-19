@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package br.com.proway.senior.ponto.ferramentas;
 
 import java.time.Duration;
@@ -30,6 +31,8 @@ public class CalculoHorasTrabalhadasEmMinutos {
 	}
 }
 =======
+=======
+>>>>>>> refactorOO
 package br.com.proway.senior.ponto.ferramentas;
 
 import java.time.Duration;
@@ -60,4 +63,7 @@ public class CalculoHorasTrabalhadasEmMinutos {
 		return minuto;
 	}
 }
+<<<<<<< HEAD
+>>>>>>> refactorOO
+=======
 >>>>>>> refactorOO

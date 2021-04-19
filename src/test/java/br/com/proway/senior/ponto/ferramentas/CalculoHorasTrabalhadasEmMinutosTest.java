@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package ferramentas;
 
 import static org.junit.Assert.assertEquals;
@@ -95,6 +96,8 @@ public class CalculoHorasTrabalhadasEmMinutosTest {
 
 }
 =======
+=======
+>>>>>>> refactorOO
 package br.com.proway.senior.ponto.ferramentas;
 
 import static org.junit.Assert.assertEquals;
@@ -188,4 +191,7 @@ public class CalculoHorasTrabalhadasEmMinutosTest {
 	}
 
 }
+<<<<<<< HEAD
+>>>>>>> refactorOO
+=======
 >>>>>>> refactorOO

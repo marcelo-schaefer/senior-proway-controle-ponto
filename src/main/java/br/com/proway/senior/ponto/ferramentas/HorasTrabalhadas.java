@@ -5,8 +5,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ferramentas.CalculoHorasTrabalhadasEmMinutos;
 
+=======
+>>>>>>> refactorOO
 =======
 >>>>>>> refactorOO
 public class HorasTrabalhadas {
