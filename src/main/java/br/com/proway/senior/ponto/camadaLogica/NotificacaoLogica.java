@@ -43,7 +43,7 @@ public class NotificacaoLogica {
 	 * @param Pessoa entidadePessoa, identificador da pessoa a ser verificada.
 	 * @return boolean representando o sucesso da operação (true/false)
 	 */
-	public static boolean checarDestinatario(Pessoa entidadePessoa) {
+	public boolean checarDestinatario(Pessoa entidadePessoa) {
 		// Se o destinatario existe na lista de usuarios registrados
 
 		Integer idGet = entidadePessoa.getId();
@@ -78,7 +78,7 @@ public class NotificacaoLogica {
 	 * @param Pessoa entidadePessoa, para saber em qual lista pessoa salvar
 	 * @return boolean representando o sucesso da operacao (true/false)
 	 */
-	public static boolean checarValidadeMensagem(String mensagem, Pessoa entidadePessoa) {
+	public boolean checarValidadeMensagem(String mensagem, Pessoa entidadePessoa) {
 		// Mensagem deve ser não nula, maior que 0 e menor que MAX_MESSAGE_LENGTH
 		// caracteres.
 		mensagem = mensagem.trim();
