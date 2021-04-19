@@ -12,6 +12,12 @@ public class Justificativa {
 	
 	private ArrayList<String> dados = new ArrayList<String>();
 
+	@Override
+	public String toString() {
+		
+		return id + " " + data + " " + msg + " " + img + " " + status.toString();
+		
+	}
 	public Integer getId() {
 		return id;
 	}
