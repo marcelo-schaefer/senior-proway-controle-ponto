@@ -1,4 +1,4 @@
-package br.com.proway.senior.ponto.camadaEntidade;
+package test.java.br.com.proway.senior.ponto.camadaEntidade;
 
 import static org.junit.Assert.*;
 

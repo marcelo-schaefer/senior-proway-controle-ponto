@@ -1,15 +1,13 @@
-package br.com.proway.senior.ponto.camadaLogica;
+package main.java.br.com.proway.senior.ponto.camadaLogica;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import br.com.proway.senior.ponto.camadaEntidade.Justificativa;
-import br.com.proway.senior.ponto.camadaEntidade.StatusJustificativa;
+import main.java.br.com.proway.senior.ponto.camadaEntidade.Justificativa;
 
 public class JustificativaLogica {
 	
-	Justificativa entidadeJustificativa;
+	public Justificativa entidadeJustificativa;
 	
 	public JustificativaLogica(Justificativa justificativa) {
 		this.entidadeJustificativa = justificativa;
@@ -109,26 +107,61 @@ public class JustificativaLogica {
 		return true;
 	}
 	/**
-	 * Consulta lista de justificativas.
+	 * Consulta lista de justificativas por idPessoa.
 	 * 
-	 * Varre lista de justificativas, atribui √† lista tempor√°ria e retorna lista.
+	 * Pergunta id da Pessoa para imprimir lista de justificativas, varre arraylist de 
+	 * justificativas e retorna o arraylist com id igual ao escolhido pelo usu·rio.
+	 * 
 	 * @param ArrayList<Justificativa> da classe Justificativa.
 	 * @return ArrayList <String> de dados concatenados do ArrayList de Justificativas.
 	 */
 	public ArrayList<String> consultaJustificativaPessoa(ArrayList<Justificativa> justificativas){
+		
 		ArrayList<String> mostraLista = new ArrayList<String>();
 		Scanner scanner = new Scanner(System.in);
 		int idPessoa;
+		
 		System.out.println("Digite o ID da pessoa: ");
 		idPessoa = scanner.nextInt();
-		for(int i = 0; i<justificativas.size(); i++) {
+		
+		for(int i = 0; i<justificativas.size(); i++) { 
 			if(justificativas.get(i).getId() == idPessoa) {
 			String textoJustificativa = justificativas.get(i).toString();
-			mostraLista.add(textoJustificativa);
-			}else {
-				System.out.println("N„o h· justificativas para essse ID.");
+			mostraLista.add(textoJustificativa);				
 			}
 		}
+		
+		if(mostraLista.isEmpty()) System.out.println("N„o h· justificativas para esse ID.");
+		scanner.close();
+		return mostraLista;
+	}
+	/**
+	 * Consulta de lista de justificativas por status.
+	 * Pergunta status para imprimir lista de justificativas, varre arraylist de 
+	 * justificativas e retorna o arraylist com status igual ao escolhido pelo usu·rio.
+	 * 
+	 * @param ArrayList<Justificativa> justificativas
+	 * @return ArrayList<String> de dados concatenados do ArrayList de justificativas.
+	 */
+	
+	public ArrayList<String> consultaJustificativaStatus(ArrayList<Justificativa> justificativas){
+		
+		ArrayList<String> mostraLista = new ArrayList<String>();
+		Scanner scanner = new Scanner(System.in);
+		String status;
+		
+		System.out.println("Digite o status: ");
+		status = scanner.nextLine();
+		
+		
+		for(int i = 0; i<justificativas.size(); i++) { 
+			if(justificativas.get(i).getStatus().toString().equals(status.toUpperCase())){
+			String textoJustificativa = justificativas.get(i).toString();
+			mostraLista.add(textoJustificativa);				
+			}
+		}
+		
+		if(mostraLista.isEmpty()) System.out.println("N„o h· justificativas para tipo de status.");
 		scanner.close();
 		return mostraLista;
 	}
