@@ -107,5 +107,20 @@ public class JustificativaLogica {
 		}
 		return true;
 	}
+	/**
+	 * Consulta lista de justificativas.
+	 * 
+	 * Varre lista de justificativas, atribui à lista temporária e retorna lista.
+	 * @param ArrayList<Justificativa> da classe Justificativa.
+	 * @return ArrayList <String> de dados concatenados do ArrayList de Justificativas.
+	 */
+	public ArrayList<String> consultaJustificativas(ArrayList<Justificativa> justificativas){
+		ArrayList<String> mostraLista = new ArrayList<String>();
+		for(int i = 0; i<justificativas.size(); i++) {
+			String textoJustificativa = justificativas.get(i).toString();
+			mostraLista.add(textoJustificativa);
+		}
+		return mostraLista;
+	}
 	
 }
