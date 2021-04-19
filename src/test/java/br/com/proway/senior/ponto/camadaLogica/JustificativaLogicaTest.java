@@ -85,17 +85,17 @@ public class JustificativaLogicaTest {
 			minhaJustificativa.entidadeJustificativa.setStatus(statusTest);
 			ArrayList<Justificativa> testeArray = new ArrayList<Justificativa>();
 			testeArray.add(minhaJustificativa.entidadeJustificativa);
+			
 			String infoIdTest = "1";
 			String infoDataTest = "16/04/2020";
-			String infoMsgTest = "Teste mensagem";
+			String infoMsgTest = "Teste mensagem";		//Pré-definição de dados para teste de retorno de método
 			String infoDataImg = "Teste imagem";
 			String infoStatusTest = "PENDENTE";
+			
 			ArrayList<String> dadosRecebidos = new ArrayList<String>();
 			dadosRecebidos.add(infoIdTest+" "+infoDataTest + " " + infoMsgTest + " " + infoDataImg +" "+infoStatusTest);
 			
-			System.out.println(objetoJustificativa.toString());
-			
 			minhaJustificativa.cadastrarJustificativa(objetoJustificativa);
-			assertEquals(dadosRecebidos, minhaJustificativa.consultaJustificativas(testeArray));
+			assertEquals(dadosRecebidos, minhaJustificativa.consultaJustificativaPessoa(testeArray));
 		}
 }

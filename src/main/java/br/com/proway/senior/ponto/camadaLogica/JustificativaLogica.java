@@ -2,6 +2,7 @@ package br.com.proway.senior.ponto.camadaLogica;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import br.com.proway.senior.ponto.camadaEntidade.Justificativa;
 import br.com.proway.senior.ponto.camadaEntidade.StatusJustificativa;
@@ -114,13 +115,23 @@ public class JustificativaLogica {
 	 * @param ArrayList<Justificativa> da classe Justificativa.
 	 * @return ArrayList <String> de dados concatenados do ArrayList de Justificativas.
 	 */
-	public ArrayList<String> consultaJustificativas(ArrayList<Justificativa> justificativas){
+	public ArrayList<String> consultaJustificativaPessoa(ArrayList<Justificativa> justificativas){
 		ArrayList<String> mostraLista = new ArrayList<String>();
+		Scanner scanner = new Scanner(System.in);
+		int idPessoa;
+		System.out.println("Digite o ID da pessoa: ");
+		idPessoa = scanner.nextInt();
 		for(int i = 0; i<justificativas.size(); i++) {
+			if(justificativas.get(i).getId() == idPessoa) {
 			String textoJustificativa = justificativas.get(i).toString();
 			mostraLista.add(textoJustificativa);
+			}else {
+				System.out.println("Não há justificativas para essse ID.");
+			}
 		}
+		scanner.close();
 		return mostraLista;
 	}
+
 	
 }
