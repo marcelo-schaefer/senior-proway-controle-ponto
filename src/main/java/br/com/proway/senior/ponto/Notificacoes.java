@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 /**
  * 
  */
+=======
+>>>>>>> refactorOO
 package br.com.proway.senior.ponto;
 
 import java.util.Arrays;
@@ -14,6 +17,10 @@ import java.util.List;
  *
  */
 public class Notificacoes {
+<<<<<<< HEAD
+=======
+	
+>>>>>>> refactorOO
 	public static short MAX_MESSAGE_LENGTH = 200;
 	
 	/**
@@ -39,7 +46,11 @@ public class Notificacoes {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * <h1> checarDestinatario </h1> 
+=======
+	 * <h1>ChecarDestinatario</h1> 
+>>>>>>> refactorOO
 	 * A função checa a existência do usuário no banco de dados.
 	 * 
 	 * 
