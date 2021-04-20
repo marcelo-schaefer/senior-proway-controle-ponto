@@ -10,9 +10,12 @@ public class Colaborador extends Pessoa {
 	private Integer idTime;
 	private Integer idTurno;
 	private boolean ehGerente;
+	private boolean ehAtivo;
 	private int jornadaEmMinutos;
 	private ArrayList<HistoricoMensal<Justificativa>> justificativas;
 	private ArrayList<HistoricoMensal<JornadaDeTrabalho>> jornadas;
+	
+	public Colaborador() {}
 
 	public Colaborador() {};
 	
@@ -36,6 +39,7 @@ public class Colaborador extends Pessoa {
 		this.justificativas.add(justificativasDoPrimeiroMes);
 	}
 
+
 	/**
 	 * Salva o ponto
 	 * 
@@ -55,7 +59,7 @@ public class Colaborador extends Pessoa {
 		return novoPonto;
 	}*/
 	
-	/*public Justificativa salvarJustificativa(Justificativa novaJustificativa) {
+	/*public Justificativa salvarJustificativa(Justificativa novaJustificativa) 
 		JustificativaLogica novaJustificativaLogica = new JustificativaLogica(novaJustificativa);		
 		novaJustificativaLogica.cadastrarJustificativa(novaJustificativa);
 		HistoricoMensal<Justificativa> ultimoHistoricoMensalDeJustificativas = justificativas.get(justificativas.size() - 1);

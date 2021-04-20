@@ -1,9 +1,11 @@
 package br.com.proway.senior.ponto.camadaEntidade;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class JornadaDeTrabalho {
 	private ArrayList<Ponto> pontos;
+
 	private int horas;
 	private int minutos;
 	private int segundos;
@@ -44,10 +46,9 @@ public class JornadaDeTrabalho {
 	public void setPontos(ArrayList<Ponto> pontos) {
 		this.pontos = pontos;
 	}
-	
+
 	public void addPonto(Ponto ponto) {
 		pontos.add(ponto);
 	}
-	
-	
+
 }
