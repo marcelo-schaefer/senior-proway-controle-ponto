@@ -3,7 +3,6 @@ package br.com.proway.senior.ponto.camadaLogica;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import br.com.proway.senior.ponto.camadaEntidade.Colaborador;
 import br.com.proway.senior.ponto.camadaEntidade.HistoricoMensal;
 import br.com.proway.senior.ponto.camadaEntidade.JornadaDeTrabalho;
@@ -93,14 +92,14 @@ public class JustificativaLogica {
 		}
 	}
 	
-	/**<h1>Recebe dados do usuário, verifica dados e cria objeto Justificativa novo.</h1>
+	/**<h1>Recebe dados do usuï¿½rio, verifica dados e cria objeto Justificativa novo.</h1>
 	 * </br>
-	 * Recebe dados do usuário, verifica e cria objeto Justificativa novo.
+	 * Recebe dados do usuï¿½rio, verifica e cria objeto Justificativa novo.
 	 * 
-	 * @param Integer idRecebido id da pessoa recebido do usuário
-	 * @param String dataRecebido data da justificativa recebido do usuário
-	 * @param String msgRecebido mensagem da justificativa recebido do usuário
-	 * @param String imgRecebido imagem comprovante da justificativa recebido do usuário.
+	 * @param Integer idRecebido id da pessoa recebido do usuï¿½rio
+	 * @param String dataRecebido data da justificativa recebido do usuï¿½rio
+	 * @param String msgRecebido mensagem da justificativa recebido do usuï¿½rio
+	 * @param String imgRecebido imagem comprovante da justificativa recebido do usuï¿½rio.
 	 * @return Justificativa retorna objeto verificado Justificativa.
 	 */
 	public Justificativa criaEVerificaJustificativa(Integer idRecebido, String dataRecebido, String msgRecebido, String imgRecebido) {
@@ -119,7 +118,7 @@ public class JustificativaLogica {
 	}
 	
 	/**
-	 * Salva novo objeto justificativa no histórico mensal do colaborador
+	 * Salva novo objeto justificativa no histï¿½rico mensal do colaborador
 	 * 
 	 * Recebe objeto justificativa e colaborador, cria objetos novos para atualizar
 	 * @param novaJustificativa
@@ -140,7 +139,7 @@ public class JustificativaLogica {
 	 * Consulta lista de justificativas por idPessoa.
 	 * 
 	 * Pergunta id da Pessoa para imprimir lista de justificativas, varre arraylist de 
-	 * justificativas e retorna o arraylist com id igual ao escolhido pelo usuário.
+	 * justificativas e retorna o arraylist com id igual ao escolhido pelo usuï¿½rio.
 	 * 
 	 * @param ArrayList<Justificativa> da classe Justificativa.
 	 * @return ArrayList <String> de dados concatenados do ArrayList de Justificativas.
@@ -155,14 +154,13 @@ public class JustificativaLogica {
 			mostraLista.add(textoJustificativa);				
 			}
 		}
-		
-		if(mostraLista.isEmpty()) System.out.println("Não há justificativas para esse ID.");
+		if(mostraLista.isEmpty()) System.out.println("Nï¿½o hï¿½ justificativas para esse ID.");
 		return mostraLista;
 	}
 	/**
 	 * Consulta de lista de justificativas por status.
 	 * Pergunta status para imprimir lista de justificativas, varre arraylist de 
-	 * justificativas e retorna o arraylist com status igual ao escolhido pelo usuário.
+	 * justificativas e retorna o arraylist com status igual ao escolhido pelo usuï¿½rio.
 	 * 
 	 * @param ArrayList<Justificativa> justificativas
 	 * @return ArrayList<String> de dados concatenados do ArrayList de justificativas.
@@ -178,8 +176,7 @@ public class JustificativaLogica {
 			mostraLista.add(textoJustificativa);				
 			}
 		}
-		
-		if(mostraLista.isEmpty()) System.out.println("Não há justificativas para tipo de status.");
+		if(mostraLista.isEmpty()) System.out.println("Nï¿½o hï¿½ justificativas para tipo de status.");
 		return mostraLista;
 	}
 

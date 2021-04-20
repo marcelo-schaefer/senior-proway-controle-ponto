@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class ColaboradorTest {
 
+
 	@Test
 	public void testSalvarNovoPonto() {
 		Colaborador colaborador = new Colaborador(01, 01, false);

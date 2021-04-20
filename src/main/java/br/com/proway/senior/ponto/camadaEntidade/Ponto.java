@@ -1,20 +1,27 @@
 package br.com.proway.senior.ponto.camadaEntidade;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Ponto {
 	private Integer id;
+	private int idColaborador;
 	private TipoDePonto tipoDePonto;
-	private LocalDateTime data;
+	private LocalDate data;
 	private String localizacao;
 	private LocalDateTime horario;
 
-	public Ponto(Integer id, TipoDePonto tipoDePonto, LocalDateTime data, String localizacao) {
+	public Ponto() {
+		super();
+	}
+	
+	public Ponto(Integer id, TipoDePonto tipoDePonto, LocalDate data, LocalDateTime horario, String localizacao) {
 		super();
 		this.id = id;
 		this.setTipoDePonto(tipoDePonto);
 		this.data = data;
 		this.localizacao = localizacao;
+		this.horario = horario;
 	}
 
 	public Integer getId() {
@@ -25,11 +32,11 @@ public class Ponto {
 		this.id = id;
 	}
 
-	public LocalDateTime getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(LocalDateTime data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
@@ -55,6 +62,14 @@ public class Ponto {
 
 	public void setTipoDePonto(TipoDePonto tipoDePonto) {
 		this.tipoDePonto = tipoDePonto;
+	}
+
+	public int getIdColaborador() {
+		return idColaborador;
+	}
+
+	public void setIdColaborador(int idColaborador) {
+		this.idColaborador = idColaborador;
 	}
 
 }

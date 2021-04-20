@@ -1,12 +1,18 @@
 package br.com.proway.senior.ponto.camadaLogica;
 
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import br.com.proway.senior.ponto.camadaEntidade.Colaborador;
+import br.com.proway.senior.ponto.camadaEntidade.HistoricoMensal;
+import br.com.proway.senior.ponto.camadaEntidade.JornadaDeTrabalho;
 import br.com.proway.senior.ponto.camadaEntidade.Ponto;
+import br.com.proway.senior.ponto.camadaEntidade.TipoDePonto;
 
 public class PontoLogica {
+	public static ArrayList<Ponto> pontos = new ArrayList<Ponto>();
 	
 
 	/**
@@ -21,6 +27,11 @@ public class PontoLogica {
 
 	}
 
+	public static ArrayList<Ponto> pegarTodosOsPontos() {		
+		// SQL para pegar todos os pontos do banco
+		return pontos;		
+	}
+	
 	/**
 	 * Pega registro de pontos de um colaborador.
 	 * 
@@ -35,33 +46,45 @@ public class PontoLogica {
 	}
 
 	/**
-	 * Pega registro de pontos de uma jornada de trabalho de um colaborador.
+	 * Salva o ponto
 	 * 
-	 * Retorna uma lista de pontos referente a uma jornada de trabalho de
-	 * determinado dia de um colaborador.
+	 * O metodo recebe o tipo do ponto e sua localizacao, pega o final da lsita de
+	 * jornadas de trabalho e adciona o ponto nela
 	 * 
-	 * @param colaborador Colaborador a ser consultado.
-	 * @param data        Data da jornada a ser retornada.
-	 * @return ArrayList<Ponto>
+	 * @param TipoDeponto tipo, enum da maneira que foi feito o ponto
+	 * @param String      localizacao, localizacao de onde o usuario bateu o ponto
 	 */
-	public ArrayList<Ponto> pegarPontosDeUmaJornada(Colaborador colaborador, LocalDate data) {
-		ArrayList<Ponto> pontos = new ArrayList();
-		return pontos;
+	public Ponto salvarPonto(TipoDePonto tipo, String localizacao, Colaborador c) {
+		HistoricoMensal<JornadaDeTrabalho> ultimoHistoricoMensal = c.getJornadas().get(c.getJornadas().size() - 1);
+		JornadaDeTrabalho ultimaJornadaDoUltimoHistoricoMensal = ultimoHistoricoMensal.getObjetos()
+				.get(ultimoHistoricoMensal.getObjetos().size() - 1);
+		LocalDate dataAtual = LocalDate.now();
+		LocalDateTime horarioAtual = LocalDateTime.now();
+		Ponto novoPonto = new Ponto(c.getId(), tipo, dataAtual, horarioAtual, localizacao);
+		ultimaJornadaDoUltimoHistoricoMensal.addPonto(novoPonto);
+		return novoPonto;
 	}
-
-	/**
-	 * Cadastra o ponto batido
+	
+	/***
+	 * <h1>Pegar jornada de trabalho por colaborador e data</h1> </br>
+	 * Retorna uma lista de pontos do colaborador informado referente a data
+	 * informada.
 	 * 
-	 * O metodo recebe todas as caracteristicas de um ponto e armazena elas
-	 * 
-	 * @param Ponto ponto, tras as caracteristicas de um ponto
+	 * @param colaborador Colaborador, referente ao colaborador a serconsultado.
+	 * @param data        LocalDate, referente a data informada.
+	 * @return ArrayList<Ponto> referente aos pontos.
 	 */
-	public void cadastrarPonto(Ponto ponto) {
-	}
+	public static ArrayList<Ponto> pegarPontosDeUmaJornadaPorColaboradorEData(Colaborador colaborador, LocalDate data) {
 
-	public Integer gerarChave(Integer id) {
+		ArrayList<Ponto> todosOsPontos = PontoLogica.pegarTodosOsPontos();
+		ArrayList<Ponto> pontosDaJornada = new ArrayList<Ponto>();
 
-		return null;
+		for (Ponto ponto : todosOsPontos) {
+			if (ponto.getIdColaborador() == colaborador.getId() && ponto.getData().equals(data)) {
+				pontosDaJornada.add(ponto);
+			}
+		}
+		return pontosDaJornada;
 	}
 
 }
