@@ -4,13 +4,16 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import br.com.proway.senior.ponto.camadaLogica.PontoLogica;
+
 public class ColaboradorTest {
 
 
 	@Test
 	public void testSalvarNovoPonto() {
 		Colaborador colaborador = new Colaborador(01, 01, false);
-		Ponto novoPonto = colaborador.salvarPonto(TipoDePonto.Web, "Rua Teste 1337");
+		PontoLogica pontoLogica = new PontoLogica();
+		Ponto novoPonto = pontoLogica.salvarPonto(TipoDePonto.Web, "Rua Teste 1337", colaborador);
 		HistoricoMensal<JornadaDeTrabalho> ultimoHistoricoMensal = colaborador.getJornadas()
 				.get(colaborador.getJornadas().size() - 1);
 		JornadaDeTrabalho ultimaJornadaDoUltimoHistoricoMensal = ultimoHistoricoMensal.getObjetos()
