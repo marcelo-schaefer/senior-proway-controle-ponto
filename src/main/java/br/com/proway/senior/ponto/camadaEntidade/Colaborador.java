@@ -10,9 +10,12 @@ public class Colaborador extends Pessoa {
 	private Integer idTime;
 	private Integer idTurno;
 	private boolean ehGerente;
+	private int jornadaEmMinutos;
 	private ArrayList<HistoricoMensal<Justificativa>> justificativas;
 	private ArrayList<HistoricoMensal<JornadaDeTrabalho>> jornadas;
 
+	public Colaborador() {};
+	
 	public Colaborador(Integer idTime, Integer idTurno, boolean ehGerente) {
 		super();
 		this.setIdTime(idTime);
@@ -42,7 +45,7 @@ public class Colaborador extends Pessoa {
 	 * @param TipoDeponto tipo, enum da maneira que foi feito o ponto
 	 * @param String      localizacao, localizacao de onde o usuario bateu o ponto
 	 */
-	public Ponto salvarPonto(TipoDePonto tipo, String localizacao) {
+	/*public Ponto salvarPonto(TipoDePonto tipo, String localizacao) {
 		HistoricoMensal<JornadaDeTrabalho> ultimoHistoricoMensal = jornadas.get(jornadas.size() - 1);
 		JornadaDeTrabalho ultimaJornadaDoUltimoHistoricoMensal = ultimoHistoricoMensal.getObjetos()
 				.get(ultimoHistoricoMensal.getObjetos().size() - 1);
@@ -50,14 +53,22 @@ public class Colaborador extends Pessoa {
 		Ponto novoPonto = new Ponto(this.getId(), tipo, dateTimeAtual, localizacao);
 		ultimaJornadaDoUltimoHistoricoMensal.addPonto(novoPonto);
 		return novoPonto;
-	}
+	}*/
 	
-	public Justificativa salvarJustificativa(Justificativa novaJustificativa) {
+	/*public Justificativa salvarJustificativa(Justificativa novaJustificativa) {
 		JustificativaLogica novaJustificativaLogica = new JustificativaLogica(novaJustificativa);		
 		novaJustificativaLogica.cadastrarJustificativa(novaJustificativa);
 		HistoricoMensal<Justificativa> ultimoHistoricoMensalDeJustificativas = justificativas.get(justificativas.size() - 1);
 		ultimoHistoricoMensalDeJustificativas.getObjetos().add(novaJustificativa);
 		return novaJustificativa;
+	}*/
+	
+	public int getJornadaEmMinutos() {
+		return jornadaEmMinutos;
+	}
+
+	public void setJornadaEmMinutos(int jornadaEmMinutos) {
+		this.jornadaEmMinutos = jornadaEmMinutos;
 	}
 
 	public Integer getIdTurno() {
@@ -100,12 +111,6 @@ public class Colaborador extends Pessoa {
 		this.idTime = idTime;
 	}
 
-	public boolean isEhAtivo() {
-		return ehAtivo;
-	}
-
-	public void setEhAtivo(boolean ehAtivo) {
-		this.ehAtivo = ehAtivo;
-	}
+	
 
 }

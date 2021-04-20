@@ -1,12 +1,16 @@
 package br.com.proway.senior.ponto.camadaLogica;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import br.com.proway.senior.ponto.camadaEntidade.Colaborador;
 import br.com.proway.senior.ponto.camadaEntidade.Ponto;
+import br.com.proway.senior.ponto.camadaEntidade.TipoDePonto;
 
 public class PontoLogica {
+	
+	public static ArrayList<Ponto> pontos = new ArrayList<Ponto>();
 	
 
 	/**
@@ -21,6 +25,11 @@ public class PontoLogica {
 
 	}
 
+	public static ArrayList<Ponto> pegarTodosOsPontos() {		
+		// SQL para pegar todos os pontos do banco
+		return pontos;		
+	}
+	
 	/**
 	 * Pega registro de pontos de um colaborador.
 	 * 

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class ColaboradorTest {
 
-	@Test
+	/*@Test
 	public void testSalvarNovoPonto() {
 		Colaborador colaborador = new Colaborador(01, 01, false);
 		Ponto novoPonto = colaborador.salvarPonto(TipoDePonto.Web, "Rua Teste 1337");
@@ -28,7 +28,7 @@ public class ColaboradorTest {
 		Justificativa ultimaJustificativa = ultimoHistoricoMensalDeJustificativas.getObjetos().get(ultimoHistoricoMensalDeJustificativas.getObjetos().size() - 1);
 		assertEquals(ultimaJustificativa, novaJustificativa);
 
-	}
+	}*/
 	
 
 }

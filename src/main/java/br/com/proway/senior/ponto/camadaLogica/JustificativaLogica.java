@@ -1,9 +1,9 @@
-package main.java.br.com.proway.senior.ponto.camadaLogica;
+package br.com.proway.senior.ponto.camadaLogica;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import main.java.br.com.proway.senior.ponto.camadaEntidade.Justificativa;
+import br.com.proway.senior.ponto.camadaEntidade.Justificativa;
 
 public class JustificativaLogica {
 	
@@ -110,7 +110,7 @@ public class JustificativaLogica {
 	 * Consulta lista de justificativas por idPessoa.
 	 * 
 	 * Pergunta id da Pessoa para imprimir lista de justificativas, varre arraylist de 
-	 * justificativas e retorna o arraylist com id igual ao escolhido pelo usuário.
+	 * justificativas e retorna o arraylist com id igual ao escolhido pelo usuï¿½rio.
 	 * 
 	 * @param ArrayList<Justificativa> da classe Justificativa.
 	 * @return ArrayList <String> de dados concatenados do ArrayList de Justificativas.
@@ -131,14 +131,14 @@ public class JustificativaLogica {
 			}
 		}
 		
-		if(mostraLista.isEmpty()) System.out.println("Não há justificativas para esse ID.");
+		if(mostraLista.isEmpty()) System.out.println("Nï¿½o hï¿½ justificativas para esse ID.");
 		scanner.close();
 		return mostraLista;
 	}
 	/**
 	 * Consulta de lista de justificativas por status.
 	 * Pergunta status para imprimir lista de justificativas, varre arraylist de 
-	 * justificativas e retorna o arraylist com status igual ao escolhido pelo usuário.
+	 * justificativas e retorna o arraylist com status igual ao escolhido pelo usuï¿½rio.
 	 * 
 	 * @param ArrayList<Justificativa> justificativas
 	 * @return ArrayList<String> de dados concatenados do ArrayList de justificativas.
@@ -161,7 +161,7 @@ public class JustificativaLogica {
 			}
 		}
 		
-		if(mostraLista.isEmpty()) System.out.println("Não há justificativas para tipo de status.");
+		if(mostraLista.isEmpty()) System.out.println("Nï¿½o hï¿½ justificativas para tipo de status.");
 		scanner.close();
 		return mostraLista;
 	}
