@@ -14,7 +14,7 @@ public class NotificacaoLogicaTest {
 		
 		entidadePessoa.setId(1);
 		
-		assertEquals(true, minhaClasse.checarDestinatario(entidadePessoa, 1));
+		assertEquals(true, minhaClasse.validarDestinatario(1));
 	}
 	
 	@Test

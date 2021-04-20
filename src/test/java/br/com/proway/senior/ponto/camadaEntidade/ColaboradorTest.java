@@ -22,5 +22,4 @@ public class ColaboradorTest {
 				.get(ultimaJornadaDoUltimoHistoricoMensal.getPontos().size() - 1);
 		assertEquals(ultimoPonto, novoPonto);
 	}	
-
 }
