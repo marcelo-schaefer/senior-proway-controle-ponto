@@ -3,11 +3,8 @@ package br.com.proway.senior.ponto.camadaLogica;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import br.com.proway.senior.ponto.camadaEntidade.Colaborador;
-import br.com.proway.senior.ponto.camadaEntidade.HistoricoMensal;
-import br.com.proway.senior.ponto.camadaEntidade.JornadaDeTrabalho;
+
 import br.com.proway.senior.ponto.camadaEntidade.Justificativa;
-import br.com.proway.senior.ponto.camadaEntidade.StatusJustificativa;
 
 public class JustificativaLogica {
 	
@@ -15,10 +12,6 @@ public class JustificativaLogica {
 	
 	public JustificativaLogica(Justificativa justificativa) {
 		this.entidadeJustificativa = justificativa;
-	}
-	
-	public JustificativaLogica() {
-		
 	}
 	
 	/**<h1>Verifica se a data informada Ã© vÃ¡lida.</h1>
@@ -92,91 +85,85 @@ public class JustificativaLogica {
 		}
 	}
 	
-	/**<h1>Recebe dados do usuï¿½rio, verifica dados e cria objeto Justificativa novo.</h1>
+	/**<h1>Envia a justificativa.</h1>
 	 * </br>
-	 * Recebe dados do usuï¿½rio, verifica e cria objeto Justificativa novo.
+	 * Recebe a classe Justificativa verifica se
+	 * atributos sÃ£o vÃ¡lidos e adiciona eles a lista de dados.
 	 * 
-	 * @param Integer idRecebido id da pessoa recebido do usuï¿½rio
-	 * @param String dataRecebido data da justificativa recebido do usuï¿½rio
-	 * @param String msgRecebido mensagem da justificativa recebido do usuï¿½rio
-	 * @param String imgRecebido imagem comprovante da justificativa recebido do usuï¿½rio.
-	 * @return Justificativa retorna objeto verificado Justificativa.
+	 * @param Classe Justificativa com atribuos data, mensagem e imagem.
+	 * @return <strong>boolean</strong> true se se os dados foram
+	 * adicionados, false caso contrÃ¡rio.
 	 */
-	public Justificativa criaEVerificaJustificativa(Integer idRecebido, String dataRecebido, String msgRecebido, String imgRecebido) {
-		StatusJustificativa statusNovo = StatusJustificativa.PENDENTE;
-		Justificativa entidadeJustificativa = new Justificativa(idRecebido, dataRecebido, msgRecebido, imgRecebido);
-		entidadeJustificativa.setStatus(statusNovo);
+	public boolean cadastrarJustificativa(Justificativa entidadeJustificativa) {
+		String dataGet = entidadeJustificativa.getData();
+		String dataMsg = entidadeJustificativa.getMsg();
+		String dataImg = entidadeJustificativa.getImg();
 		if(verificaData(entidadeJustificativa) == false || verificaImagem(entidadeJustificativa) == false || verificaMensagem(entidadeJustificativa) == false) {
-			return null;
+			return false;
 		} else {
 			ArrayList<String> infos = new ArrayList<String>();
-			infos.add(idRecebido +" "+ dataRecebido + " " + msgRecebido + " " + imgRecebido +" "+ statusNovo);
+			infos.add(dataGet + " " + dataMsg + " " + dataImg);
 			entidadeJustificativa.setDados(infos);
-			return entidadeJustificativa;
 		}
-		
-	}
-	
-	/**
-	 * Salva novo objeto justificativa no histï¿½rico mensal do colaborador
-	 * 
-	 * Recebe objeto justificativa e colaborador, cria objetos novos para atualizar
-	 * @param novaJustificativa
-	 * @param colaboradorRecebido
-	 */
-	public ArrayList<HistoricoMensal<Justificativa>> salvarJustificativa(Justificativa novaJustificativa, Colaborador colaboradorRecebido) {
-		
-		Integer idRecebido = colaboradorRecebido.getId();
-		ArrayList<HistoricoMensal<Justificativa>> novoHistoricoAtualizado = colaboradorRecebido.getJustificativas();
-		if(idRecebido == novaJustificativa.getId()) {
-			
-			novoHistoricoAtualizado.get(novoHistoricoAtualizado.size()-1).getObjetos().add(novaJustificativa);
-			return novoHistoricoAtualizado;
-		}
-		return null;
+		return true;
 	}
 	/**
 	 * Consulta lista de justificativas por idPessoa.
 	 * 
 	 * Pergunta id da Pessoa para imprimir lista de justificativas, varre arraylist de 
-	 * justificativas e retorna o arraylist com id igual ao escolhido pelo usuï¿½rio.
+	 * justificativas e retorna o arraylist com id igual ao escolhido pelo usuário.
 	 * 
 	 * @param ArrayList<Justificativa> da classe Justificativa.
 	 * @return ArrayList <String> de dados concatenados do ArrayList de Justificativas.
 	 */
-	public ArrayList<String> consultaJustificativaPessoa(ArrayList<Justificativa> justificativas, int id){
+	public ArrayList<String> consultaJustificativaPessoa(ArrayList<Justificativa> justificativas){
 		
 		ArrayList<String> mostraLista = new ArrayList<String>();
-	
-		for(int i = 0; i<justificativas.size(); i++) {
-			if(justificativas.get(i).getId() == id) {
+		Scanner scanner = new Scanner(System.in);
+		int idPessoa;
+		
+		System.out.println("Digite o ID da pessoa: ");
+		idPessoa = scanner.nextInt();
+		
+		for(int i = 0; i<justificativas.size(); i++) { 
+			if(justificativas.get(i).getId() == idPessoa) {
 			String textoJustificativa = justificativas.get(i).toString();
 			mostraLista.add(textoJustificativa);				
 			}
 		}
-		if(mostraLista.isEmpty()) System.out.println("Nï¿½o hï¿½ justificativas para esse ID.");
+		
+		if(mostraLista.isEmpty()) System.out.println("Não há justificativas para esse ID.");
+		scanner.close();
 		return mostraLista;
 	}
 	/**
 	 * Consulta de lista de justificativas por status.
 	 * Pergunta status para imprimir lista de justificativas, varre arraylist de 
-	 * justificativas e retorna o arraylist com status igual ao escolhido pelo usuï¿½rio.
+	 * justificativas e retorna o arraylist com status igual ao escolhido pelo usuário.
 	 * 
 	 * @param ArrayList<Justificativa> justificativas
 	 * @return ArrayList<String> de dados concatenados do ArrayList de justificativas.
 	 */
 	
-	public ArrayList<String> consultaJustificativaStatus(ArrayList<Justificativa> justificativas, String status){
+	public ArrayList<String> consultaJustificativaStatus(ArrayList<Justificativa> justificativas){
 		
 		ArrayList<String> mostraLista = new ArrayList<String>();
-
+		Scanner scanner = new Scanner(System.in);
+		String status;
+		
+		System.out.println("Digite o status: ");
+		status = scanner.nextLine();
+		
+		
 		for(int i = 0; i<justificativas.size(); i++) { 
 			if(justificativas.get(i).getStatus().toString().equals(status.toUpperCase())){
 			String textoJustificativa = justificativas.get(i).toString();
 			mostraLista.add(textoJustificativa);				
 			}
 		}
-		if(mostraLista.isEmpty()) System.out.println("Nï¿½o hï¿½ justificativas para tipo de status.");
+		
+		if(mostraLista.isEmpty()) System.out.println("Não há justificativas para tipo de status.");
+		scanner.close();
 		return mostraLista;
 	}
 

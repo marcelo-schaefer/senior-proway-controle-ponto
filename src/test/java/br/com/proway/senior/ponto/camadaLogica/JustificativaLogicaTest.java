@@ -61,123 +61,99 @@ public class JustificativaLogicaTest {
 			assertTrue(minhaJustificativa.verificaImagem(objetoJustificativa));
 		}
 		@Test
-		public void testEnviarJustificativa(){
-			Justificativa objetoJustificativa = new Justificativa();
+		public void testCriaEVerificaJustificativa(){
+			JustificativaLogica minhaJustificativa = new JustificativaLogica();
+			Justificativa objetoJustificativa2 = new Justificativa(1, "16/04/2020", "Teste mensagem", "Teste imagem");
+			assertEquals(objetoJustificativa2,minhaJustificativa.criaEVerificaJustificativa(1, "16/04/2020", "Teste mensagem", "Teste imagem"));
+		}
+		
+		@Test
+		public void testSalvaJustificativaNoHistorico() {
+			Justificativa objetoJustificativa = new Justificativa(5, "11/04/2021", "Teste mensagem", "Teste imagem");
 			JustificativaLogica minhaJustificativa = new JustificativaLogica(objetoJustificativa);
-			minhaJustificativa.entidadeJustificativa.setData("16/04/2020");
-			minhaJustificativa.entidadeJustificativa.setMsg("Teste mensagem");
-			minhaJustificativa.entidadeJustificativa.setImg("Teste imagem");
-			assertTrue(minhaJustificativa.verificaImagem(objetoJustificativa));
+			Colaborador colaboradorTest = new Colaborador(1, 1, false);
+			colaboradorTest.setId(5);
+			colaboradorTest.setNome("Pessoa Test");
+			ArrayList<HistoricoMensal<Justificativa>> historicoTest = minhaJustificativa.salvarJustificativa(objetoJustificativa, colaboradorTest);
+			ArrayList<Justificativa> justTest = historicoTest.get(historicoTest.size()-1).getObjetos();
+			assertEquals(objetoJustificativa, justTest.get(justTest.size()-1));
+			
+			
 		}
 		
 		@Test
 		public void testConsultaJustificativaIdPessoa() {
-			Justificativa objetoJustificativa = new Justificativa();
+			Justificativa objetoJustificativa = new Justificativa(1, "16/04/2020", "Teste mensagem", "Teste imagem");
 			JustificativaLogica minhaJustificativa = new JustificativaLogica(objetoJustificativa);		
 			ArrayList<Justificativa> testeArray = new ArrayList<Justificativa>(); 				
 			
 			StatusJustificativa statusTest = StatusJustificativa.PENDENTE;
 			StatusJustificativa statusTest2 = StatusJustificativa.APROVADO;
-			
-			minhaJustificativa.entidadeJustificativa.setId(1);
-			minhaJustificativa.entidadeJustificativa.setData("16/04/2020");
-			minhaJustificativa.entidadeJustificativa.setMsg("Teste mensagem");
-			minhaJustificativa.entidadeJustificativa.setImg("Teste imagem");			
+						
 			minhaJustificativa.entidadeJustificativa.setStatus(statusTest);
 			
 			testeArray.add(minhaJustificativa.entidadeJustificativa); 				
 			
-			Justificativa objetoJustificativa2 = new Justificativa();
+			Justificativa objetoJustificativa2 = new Justificativa(2, "17/04/2020", "Teste mensagem2", "Teste imagem2");
 			JustificativaLogica minhaJustificativa2 = new JustificativaLogica(objetoJustificativa2);
 			
-			minhaJustificativa2.entidadeJustificativa.setId(2);
-			minhaJustificativa2.entidadeJustificativa.setData("17/04/2020");
-			minhaJustificativa2.entidadeJustificativa.setMsg("Teste mensagem2");	
-			minhaJustificativa2.entidadeJustificativa.setImg("Teste imagem2");
 			minhaJustificativa2.entidadeJustificativa.setStatus(statusTest2);
 			
 			testeArray.add(minhaJustificativa2.entidadeJustificativa);
 			
-			String infoIdTest = "2";
-			String infoDataTest = "17/04/2020";
-			String infoMsgTest = "Teste mensagem2";	
-			String infoDataImg = "Teste imagem2";
-			String infoStatusTest = "APROVADO";
+			String dadosTest = "2 17/04/2020 Teste mensagem2 Teste imagem2 APROVADO";
 			
 			ArrayList<String> dadosRecebidos = new ArrayList<String>();
-			dadosRecebidos.add(infoIdTest+" "+infoDataTest + " " + infoMsgTest + " " + infoDataImg +" "+infoStatusTest); 
+			dadosRecebidos.add(dadosTest); 
 			
-			minhaJustificativa.cadastrarJustificativa(objetoJustificativa);
-			assertEquals(dadosRecebidos, minhaJustificativa.consultaJustificativaPessoa(testeArray));
+			assertEquals(dadosRecebidos, minhaJustificativa.consultaJustificativaPessoa(testeArray, 2));
 		}
 		
 		@Test
 		public void testConsultaJustificativaVazio() {
-			Justificativa objetoJustificativa = new Justificativa();
+			Justificativa objetoJustificativa = new Justificativa(1, "16/04/2020", "Teste mensagem", "Teste imagem");
 			JustificativaLogica minhaJustificativa = new JustificativaLogica(objetoJustificativa);		
 			ArrayList<Justificativa> testeArray = new ArrayList<Justificativa>(); 
 			
 			StatusJustificativa statusTest = StatusJustificativa.PENDENTE;
-		
-			minhaJustificativa.entidadeJustificativa.setId(1);
-			minhaJustificativa.entidadeJustificativa.setData("16/04/2020");
-			minhaJustificativa.entidadeJustificativa.setMsg("Teste mensagem");
-			minhaJustificativa.entidadeJustificativa.setImg("Teste imagem");
+
 			minhaJustificativa.entidadeJustificativa.setStatus(statusTest);
 			
 			testeArray.add(minhaJustificativa.entidadeJustificativa); 
 			
-			String infoIdTest = "2";
-			String infoDataTest = "17/04/2020";
-			String infoMsgTest = "Teste mensagem2";	
-			String infoDataImg = "Teste imagem2";
-			String infoStatusTest = "APROVADO";
+			String dadosTest = "2 17/04/2020 Teste mensagem2 Teste imagem2 APROVADO";
 			
 			ArrayList<String> dadosRecebidos = new ArrayList<String>();
-			dadosRecebidos.add(infoIdTest+" "+infoDataTest + " " + infoMsgTest + " " + infoDataImg +" "+infoStatusTest); 
+			dadosRecebidos.add(dadosTest); 
 			
-			minhaJustificativa.cadastrarJustificativa(objetoJustificativa);
-			assertNotEquals(dadosRecebidos, minhaJustificativa.consultaJustificativaPessoa(testeArray));
+			assertNotEquals(dadosRecebidos, minhaJustificativa.consultaJustificativaPessoa(testeArray, 2));
 		}
 		
 		@Test
 		public void testConsultaJustificativaStatus() {
-			Justificativa objetoJustificativa = new Justificativa();
+			Justificativa objetoJustificativa = new Justificativa(1, "16/04/2020", "Teste mensagem", "Teste imagem");
 			JustificativaLogica minhaJustificativa = new JustificativaLogica(objetoJustificativa);		
 			ArrayList<Justificativa> testeArray = new ArrayList<Justificativa>(); 				
 			
 			StatusJustificativa statusTest = StatusJustificativa.PENDENTE;
 			StatusJustificativa statusTest2 = StatusJustificativa.APROVADO;
-			
-			minhaJustificativa.entidadeJustificativa.setId(1);
-			minhaJustificativa.entidadeJustificativa.setData("16/04/2020");
-			minhaJustificativa.entidadeJustificativa.setMsg("Teste mensagem");
-			minhaJustificativa.entidadeJustificativa.setImg("Teste imagem");			
+		
 			minhaJustificativa.entidadeJustificativa.setStatus(statusTest);
 			
 			testeArray.add(minhaJustificativa.entidadeJustificativa); 				
 			
-			Justificativa objetoJustificativa2 = new Justificativa();
+			Justificativa objetoJustificativa2 = new Justificativa(2, "17/04/2020", "Teste mensagem2", "Teste imagem2");
 			JustificativaLogica minhaJustificativa2 = new JustificativaLogica(objetoJustificativa2);	
-			
-			minhaJustificativa2.entidadeJustificativa.setId(2);
-			minhaJustificativa2.entidadeJustificativa.setData("17/04/2020");
-			minhaJustificativa2.entidadeJustificativa.setMsg("Teste mensagem2");	
-			minhaJustificativa2.entidadeJustificativa.setImg("Teste imagem2");
+		
 			minhaJustificativa2.entidadeJustificativa.setStatus(statusTest2);
 			
 			testeArray.add(minhaJustificativa2.entidadeJustificativa);			
 			
-			String infoIdTest = "2";
-			String infoDataTest = "17/04/2020";
-			String infoMsgTest = "Teste mensagem2";	
-			String infoDataImg = "Teste imagem2";
-			String infoStatusTest = "APROVADO";
+			String dadosTest = "2 17/04/2020 Teste mensagem2 Teste imagem2 APROVADO";
 			
 			ArrayList<String> dadosRecebidos = new ArrayList<String>();
-			dadosRecebidos.add(infoIdTest+" "+infoDataTest + " " + infoMsgTest + " " + infoDataImg +" "+infoStatusTest); 
-			
-			minhaJustificativa.cadastrarJustificativa(objetoJustificativa);
-			assertEquals(dadosRecebidos, minhaJustificativa.consultaJustificativaStatus(testeArray));
+			dadosRecebidos.add(dadosTest); 
+	
+			assertEquals(dadosRecebidos, minhaJustificativa.consultaJustificativaStatus(testeArray, "aprovado"));
 		}
 }

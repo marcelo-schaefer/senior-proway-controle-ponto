@@ -1,18 +1,18 @@
 package br.com.proway.senior.ponto.camadaEntidade;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+
+
+import br.com.proway.senior.ponto.camadaLogica.JustificativaLogica;
 
 public class Colaborador extends Pessoa {
 	private Integer idTime;
 	private Integer idTurno;
 	private boolean ehGerente;
-	private boolean ehAtivo;
-	private int jornadaEmMinutos;
 	private ArrayList<HistoricoMensal<Justificativa>> justificativas;
 	private ArrayList<HistoricoMensal<JornadaDeTrabalho>> jornadas;
-	
-	public Colaborador() {}
-	
+
 	public Colaborador(Integer idTime, Integer idTurno, boolean ehGerente) {
 		super();
 		this.setIdTime(idTime);
@@ -33,14 +33,31 @@ public class Colaborador extends Pessoa {
 		this.justificativas.add(justificativasDoPrimeiroMes);
 	}
 
-	
-	public int getJornadaEmMinutos() {
-		return jornadaEmMinutos;
+	/**
+	 * Salva o ponto
+	 * 
+	 * O metodo recebe o tipo do ponto e sua localizacao, pega o final da lsita de
+	 * jornadas de trabalho e adciona o ponto nela
+	 * 
+	 * @param TipoDeponto tipo, enum da maneira que foi feito o ponto
+	 * @param String      localizacao, localizacao de onde o usuario bateu o ponto
+	 */
+	public Ponto salvarPonto(TipoDePonto tipo, String localizacao) {
+		HistoricoMensal<JornadaDeTrabalho> ultimoHistoricoMensal = jornadas.get(jornadas.size() - 1);
+		JornadaDeTrabalho ultimaJornadaDoUltimoHistoricoMensal = ultimoHistoricoMensal.getObjetos()
+				.get(ultimoHistoricoMensal.getObjetos().size() - 1);
+		LocalDateTime dateTimeAtual = LocalDateTime.now();
+		Ponto novoPonto = new Ponto(this.getId(), tipo, dateTimeAtual, localizacao);
+		ultimaJornadaDoUltimoHistoricoMensal.addPonto(novoPonto);
+		return novoPonto;
 	}
-
-	public void setJornadaEmMinutos(int jornadaEmMinutos) {
-		this.jornadaEmMinutos = jornadaEmMinutos;
-
+	
+	public Justificativa salvarJustificativa(Justificativa novaJustificativa) {
+		JustificativaLogica novaJustificativaLogica = new JustificativaLogica(novaJustificativa);		
+		novaJustificativaLogica.cadastrarJustificativa(novaJustificativa);
+		HistoricoMensal<Justificativa> ultimoHistoricoMensalDeJustificativas = justificativas.get(justificativas.size() - 1);
+		ultimoHistoricoMensalDeJustificativas.getObjetos().add(novaJustificativa);
+		return novaJustificativa;
 	}
 
 	public Integer getIdTurno() {
@@ -62,20 +79,11 @@ public class Colaborador extends Pessoa {
 	public ArrayList<HistoricoMensal<Justificativa>> getJustificativas() {
 		return justificativas;
 	}
-	public HistoricoMensal<Justificativa> getUltimoMesJustificativas(){
-		
-		HistoricoMensal<Justificativa> ultimoMesJustificativas;
-		ultimoMesJustificativas = this.justificativas.get(justificativas.size()-1);
-		return ultimoMesJustificativas;
-	}
 
 	public void setJustificativas(ArrayList<HistoricoMensal<Justificativa>> justificativas) {
 		this.justificativas = justificativas;
 	}
-	public void adicionaJustificativa(Justificativa novaJustificativa) {
-	
-	}
-	
+
 	public ArrayList<HistoricoMensal<JornadaDeTrabalho>> getJornadas() {
 		return jornadas;
 	}
@@ -93,14 +101,11 @@ public class Colaborador extends Pessoa {
 	}
 
 	public boolean isEhAtivo() {
-		
 		return ehAtivo;
 	}
 
 	public void setEhAtivo(boolean ehAtivo) {
 		this.ehAtivo = ehAtivo;
 	}
-
-	
 
 }
