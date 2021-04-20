@@ -1,9 +1,9 @@
-package main.java.br.com.proway.senior.ponto.camadaLogica;
+package br.com.proway.senior.ponto.camadaLogica;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import main.java.br.com.proway.senior.ponto.camadaEntidade.Justificativa;
+import br.com.proway.senior.ponto.camadaEntidade.Justificativa;
 
 public class JustificativaLogica {
 	

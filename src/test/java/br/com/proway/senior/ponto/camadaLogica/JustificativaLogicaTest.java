@@ -1,12 +1,12 @@
-package test.java.br.com.proway.senior.ponto.camadaLogica;
+package br.com.proway.senior.ponto.camadaLogica;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
-import main.java.br.com.proway.senior.ponto.camadaEntidade.*;
-import main.java.br.com.proway.senior.ponto.camadaLogica.JustificativaLogica;
+import br.com.proway.senior.ponto.camadaEntidade.*;
+import br.com.proway.senior.ponto.camadaLogica.JustificativaLogica;
 
 
 public class JustificativaLogicaTest {
