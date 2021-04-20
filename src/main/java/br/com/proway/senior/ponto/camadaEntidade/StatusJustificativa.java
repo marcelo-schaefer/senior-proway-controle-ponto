@@ -1,4 +1,4 @@
-package main.java.br.com.proway.senior.ponto.camadaEntidade;
+package br.com.proway.senior.ponto.camadaEntidade;
 
 public enum StatusJustificativa {
 
