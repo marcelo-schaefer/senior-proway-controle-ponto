@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import br.com.proway.senior.ponto.camadaEntidade.Colaborador;
+import br.com.proway.senior.ponto.camadaEntidade.Notificacao;
 import br.com.proway.senior.ponto.camadaEntidade.Pessoa;
 import br.com.proway.senior.ponto.camadaEntidade.Ponto;
 
@@ -94,7 +95,6 @@ public class NotificacaoLogica {
 		return colaboradores;
 	}
 
-	
 	/**
 	 * <h1>Envia notificacao</h1> </br>
 	 * Responsavel por enviar uma mensagem em formato de String para um usuario
@@ -106,32 +106,19 @@ public class NotificacaoLogica {
 	 * @param id            Integer, referente ao destinatário da mensagem.
 	 * @return boolean representando o sucesso da operacao (true/false)
 	 */
-	/*public boolean enviarNotificacao(Pessoa entidadePessoa, String mensagem, Integer id) {
-		if (checarDestinatario(entidadePessoa, id) == true && checarValidadeMensagem(mensagem) == true) {
-			ArrayList<String> listaMensagem = new ArrayList<String>();
-			listaMensagem.add(mensagem);
-			entidadePessoa.setMensagens(listaMensagem);
-			return true;
+	public Notificacao enviarNotificacao(Integer idDestinatario, String mensagem) {
+		Notificacao notificacao = new Notificacao();
+		if (validarDestinatario(idDestinatario) != null && validarMensagem(mensagem) == true) {
+			notificacao.setIdDestinatario(idDestinatario);
+			notificacao.setMensagem(mensagem);
+			return notificacao;
+		} else {
+			return null;
 		}
-		return false;
-	}*/
+	}
 
 	/**
-	 * <h1>Apresenta a lista de mensagens da pessoa.</h1> </br>
-	 * Mostra todas as mensagens de uma pessoa.
-	 * 
-	 * @param entidadePessoa Pessoa, consultor da pessoa informada(no caso pelo id).
-	 * @param id             Integer, referente a pessoa a ser consultada.
-	 * @return ArrayList<String>, referente a lista de mensagens.
-	 */
-	/*
-	 * public ArrayList<String> consultarNotificacaoPorPessoa(Pessoa entidadePessoa,
-	 * Integer id) { if(checarDestinatario(entidadePessoa, id) == true) { return
-	 * entidadePessoa.getMensagens(); } return null; }
-	 */
-
-	/**
-	 * <h1>Checar validade da mensagem</h1> </br>
+	 * <h1>Validar a mensagem</h1> </br>
 	 * A função checa se a mensagem se adequa aos requerimentos do sistema. O
 	 * comprimento da mensagem deve estar entre 1 e 200 caracteres, se for aceita, a
 	 * mensagem ja eh salva na lista de mensagens.
@@ -140,7 +127,7 @@ public class NotificacaoLogica {
 	 * @param entidadePessoa Pessoa, para saber em qual lista pessoa salvar.
 	 * @return boolean representando o sucesso da operacao (true/false).
 	 */
-	public boolean checarValidadeMensagem(String mensagem) {
+	public boolean validarMensagem(String mensagem) {
 		mensagem = mensagem.trim();
 		if (mensagem != null && mensagem.length() > 0 && mensagem.length() <= 200) {
 			return true;
@@ -157,11 +144,9 @@ public class NotificacaoLogica {
 	 * @param id             Integer, referente a pessoa a ser consultada.
 	 * @return boolean representando o sucesso da operação (true/false)
 	 */
-	public boolean checarDestinatario(Pessoa entidadePessoa, Integer id) {
-		Integer idGet = entidadePessoa.getId();
-		if (id == idGet) {
-			return true;
-		}
-		return false;
+	public Colaborador validarDestinatario(Integer id) {
+		// busca usu�rio no banco de dados pelo id, se existir retorna o colaborador, se n�o
+		// existir retorna null
+		return null;
 	}
 }

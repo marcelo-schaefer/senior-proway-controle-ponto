@@ -22,7 +22,7 @@ public class NotificacaoLogicaTest {
 		Pessoa entidadePessoa = new Pessoa();
 		NotificacaoLogica minhaClasse = new NotificacaoLogica(entidadePessoa);
 
-		assertTrue(minhaClasse.checarValidadeMensagem("Mensagem"));
+		assertTrue(minhaClasse.validarMensagem("Mensagem"));
 	}
 	
 	/*@Test
