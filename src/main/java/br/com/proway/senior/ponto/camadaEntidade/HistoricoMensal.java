@@ -12,10 +12,11 @@ public class HistoricoMensal<T> {
 		objetos.add(novoObjeto);
 	}
 
+
 	public HistoricoMensal() {
 		this.objetos = new ArrayList<T>();
 	}
-	
+
 	public HistoricoMensal(ArrayList<T> objetos, int ano, int mes) {
 		super();
 		this.objetos = objetos;

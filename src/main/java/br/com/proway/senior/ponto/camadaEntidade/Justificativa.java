@@ -1,4 +1,4 @@
-package br.com.proway.senior.ponto.camadaEntidade;
+package main.java.br.com.proway.senior.ponto.camadaEntidade;
 
 import java.util.ArrayList;
 

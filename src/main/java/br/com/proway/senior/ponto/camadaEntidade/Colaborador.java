@@ -3,6 +3,7 @@ package br.com.proway.senior.ponto.camadaEntidade;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+
 import br.com.proway.senior.ponto.camadaLogica.JustificativaLogica;
 
 public class Colaborador extends Pessoa {
@@ -22,9 +23,9 @@ public class Colaborador extends Pessoa {
 		JornadaDeTrabalho primeiraJornada = new JornadaDeTrabalho(); // Inicializa a primeira
 																					// JornadaDeTrabalho
 		HistoricoMensal<JornadaDeTrabalho> primeiroMes = new HistoricoMensal<JornadaDeTrabalho>(
-				primeiraJornada); // Inicializa o histórico mensal do primeiro mês adicionando a
+				primeiraJornada); // Inicializa o histï¿½rico mensal do primeiro mï¿½s adicionando a
 												// primeiraJornada.
-		this.jornadas.add(primeiroMes); // Adiciona o primeiro mês (HistoricoMensal<JornadaDeTrabalho>) na lista de
+		this.jornadas.add(primeiroMes); // Adiciona o primeiro mï¿½s (HistoricoMensal<JornadaDeTrabalho>) na lista de
 										// jornadas.
 		
 		this.justificativas = new ArrayList<HistoricoMensal<Justificativa>>();
@@ -97,6 +98,14 @@ public class Colaborador extends Pessoa {
 
 	public void setIdTime(Integer idTime) {
 		this.idTime = idTime;
+	}
+
+	public boolean isEhAtivo() {
+		return ehAtivo;
+	}
+
+	public void setEhAtivo(boolean ehAtivo) {
+		this.ehAtivo = ehAtivo;
 	}
 
 }
