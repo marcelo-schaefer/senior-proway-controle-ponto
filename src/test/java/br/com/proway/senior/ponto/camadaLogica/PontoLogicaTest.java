@@ -141,7 +141,8 @@ public class PontoLogicaTest {
 	public void testRetornaColaboradoresASeremNotificados() {
 		popularPontos();
 		popularColaboradores();
-		ArrayList<Colaborador> colaboradores = NotificacaoLogica.retornaColaboradoresASeremNotificados(listaColaboradores);
+		NotificacaoLogica notificacaoLogica = new NotificacaoLogica();
+		ArrayList<Colaborador> colaboradores = notificacaoLogica.retornaColaboradoresASeremNotificados(listaColaboradores);
 		//fazer popular colaborador com um colaborador só de id 4 e chamar método que retorna colaboradores com jornada de trabalho menor do que a especificada
 		
 		assertEquals(colaboradores.get(0), listaColaboradores.get(0));

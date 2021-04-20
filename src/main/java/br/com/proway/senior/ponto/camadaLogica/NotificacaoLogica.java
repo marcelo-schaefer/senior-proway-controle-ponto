@@ -9,12 +9,16 @@ import br.com.proway.senior.ponto.camadaEntidade.Colaborador;
 import br.com.proway.senior.ponto.camadaEntidade.Notificacao;
 import br.com.proway.senior.ponto.camadaEntidade.Pessoa;
 import br.com.proway.senior.ponto.camadaEntidade.Ponto;
+import br.com.proway.senior.ponto.camadaInterface.NotificacaoLogicaInterface;
 
-public class NotificacaoLogica {
+public class NotificacaoLogica implements NotificacaoLogicaInterface{
 
 	Pessoa entidadePessoa;
 	Ponto entidadePonto;
 	Colaborador entidadeColaborador;
+
+	public NotificacaoLogica() {
+	}
 
 	public NotificacaoLogica(Pessoa pessoa) {
 		this.entidadePessoa = pessoa;
@@ -38,7 +42,7 @@ public class NotificacaoLogica {
 	 *                         serem consultados
 	 * @return ArrayList<Pessoa>
 	 */
-	public static ArrayList<Colaborador> retornaColaboradoresASeremNotificados(
+	public ArrayList<Colaborador> retornaColaboradoresASeremNotificados(
 			ArrayList<Colaborador> listaColaborador) {
 		ArrayList<Colaborador> colaboradores = new ArrayList<Colaborador>();
 
@@ -48,7 +52,8 @@ public class NotificacaoLogica {
 		for (Colaborador colaborador : listaColaborador) {
 			LocalDate dataDeHoje = LocalDate.of(2021, 1, 1);
 
-			ArrayList<Ponto> listaPontos = PontoLogica.pegarPontosDeUmaJornadaPorColaboradorEData(colaborador,
+			PontoLogica pontoL = new PontoLogica();
+			ArrayList<Ponto> listaPontos = pontoL.pegarPontosDeUmaJornadaPorColaboradorEData(colaborador,
 					dataDeHoje);
 
 			if (listaPontos.size() % 2 == 0) {

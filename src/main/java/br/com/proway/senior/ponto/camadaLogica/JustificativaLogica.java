@@ -8,8 +8,9 @@ import br.com.proway.senior.ponto.camadaEntidade.HistoricoMensal;
 import br.com.proway.senior.ponto.camadaEntidade.JornadaDeTrabalho;
 import br.com.proway.senior.ponto.camadaEntidade.Justificativa;
 import br.com.proway.senior.ponto.camadaEntidade.StatusJustificativa;
+import br.com.proway.senior.ponto.camadaInterface.JustificativaLogicaInterface;
 
-public class JustificativaLogica {
+public class JustificativaLogica implements JustificativaLogicaInterface {
 	
 	public Justificativa entidadeJustificativa;
 	

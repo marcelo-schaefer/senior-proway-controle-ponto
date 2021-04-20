@@ -10,8 +10,9 @@ import br.com.proway.senior.ponto.camadaEntidade.HistoricoMensal;
 import br.com.proway.senior.ponto.camadaEntidade.JornadaDeTrabalho;
 import br.com.proway.senior.ponto.camadaEntidade.Ponto;
 import br.com.proway.senior.ponto.camadaEntidade.TipoDePonto;
+import br.com.proway.senior.ponto.camadaInterface.PontoLogicaInterface;
 
-public class PontoLogica {
+public class PontoLogica implements PontoLogicaInterface {
 	public static ArrayList<Ponto> pontos = new ArrayList<Ponto>();
 	
 
@@ -27,7 +28,7 @@ public class PontoLogica {
 
 	}
 
-	public static ArrayList<Ponto> pegarTodosOsPontos() {		
+	public ArrayList<Ponto> pegarTodosOsPontos() {		
 		// SQL para pegar todos os pontos do banco
 		return pontos;		
 	}
@@ -74,9 +75,9 @@ public class PontoLogica {
 	 * @param data        LocalDate, referente a data informada.
 	 * @return ArrayList<Ponto> referente aos pontos.
 	 */
-	public static ArrayList<Ponto> pegarPontosDeUmaJornadaPorColaboradorEData(Colaborador colaborador, LocalDate data) {
+	public ArrayList<Ponto> pegarPontosDeUmaJornadaPorColaboradorEData(Colaborador colaborador, LocalDate data) {
 
-		ArrayList<Ponto> todosOsPontos = PontoLogica.pegarTodosOsPontos();
+		ArrayList<Ponto> todosOsPontos = pegarTodosOsPontos();
 		ArrayList<Ponto> pontosDaJornada = new ArrayList<Ponto>();
 
 		for (Ponto ponto : todosOsPontos) {
