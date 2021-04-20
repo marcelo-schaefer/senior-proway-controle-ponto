@@ -57,7 +57,6 @@ public class PontoLogica {
 	 * @param Ponto ponto, tras as caracteristicas de um ponto
 	 */
 	public void cadastrarPonto(Ponto ponto) {
-		ponto.ge
 	}
 
 	public Integer gerarChave(Integer id) {
