@@ -5,6 +5,7 @@ public class Colaborador {
 	private String nome;	
 	private int idSuperior;
 	private int idTurno;
+	private boolean ehAtivo;
 	private boolean ehGerente;
 
 	public int getId() {
@@ -54,6 +55,14 @@ public class Colaborador {
 
 	public void setEhGerente(boolean ehGerente) {
 		this.ehGerente = ehGerente;
+	}
+
+	public boolean isEhAtivo() {
+		return ehAtivo;
+	}
+
+	public void setEhAtivo(boolean ehAtivo) {
+		this.ehAtivo = ehAtivo;
 	}
 
 }

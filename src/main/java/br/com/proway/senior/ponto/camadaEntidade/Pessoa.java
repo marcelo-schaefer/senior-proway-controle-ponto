@@ -11,7 +11,8 @@ public class Pessoa {
 	private boolean ehGerente;
 	private ArrayList<ArrayList<LocalDateTime>> listaMes;
 	private ArrayList<String> mensagens;
-	private ArrayList<Pessoa> listaPessoa;
+	
+	private ArrayList<Pessoa> listaPessoa;//Talvez desnecessária
 
 	public Integer getId() {
 		return id;
