@@ -1,23 +1,34 @@
 package br.com.proway.senior.ponto.camadaEntidade;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class HistoricoMensal<T> {
-	private List<T> objetos;
+	private ArrayList<T> objetos;
 	private int ano;
 	private int mes;
+	
+	public HistoricoMensal(T novoObjeto) {
+		this.objetos = new ArrayList<T>();
+		objetos.add(novoObjeto);
+	}
 
-	public HistoricoMensal(List<T> objetos, int ano, int mes) {
+
+	public HistoricoMensal() {
+		this.objetos = new ArrayList<T>();
+	}
+
+	public HistoricoMensal(ArrayList<T> objetos, int ano, int mes) {
+		super();
 		this.objetos = objetos;
 		this.ano = ano;
 		this.mes = mes;
 	}
 
-	public List<T> getObjetos() {
+	public ArrayList<T> getObjetos() {
 		return objetos;
 	}
 
-	public void setObjetos(List<T> objetos) {
+	public void setObjetos(ArrayList<T> objetos) {
 		this.objetos = objetos;
 	}
 
