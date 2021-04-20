@@ -58,10 +58,33 @@ public class PontoLogica {
 		HistoricoMensal<JornadaDeTrabalho> ultimoHistoricoMensal = c.getJornadas().get(c.getJornadas().size() - 1);
 		JornadaDeTrabalho ultimaJornadaDoUltimoHistoricoMensal = ultimoHistoricoMensal.getObjetos()
 				.get(ultimoHistoricoMensal.getObjetos().size() - 1);
-		LocalDateTime dateTimeAtual = LocalDateTime.now();
-		Ponto novoPonto = new Ponto(c.getId(), tipo, dateTimeAtual, localizacao);
+		LocalDate dataAtual = LocalDate.now();
+		LocalDateTime horarioAtual = LocalDateTime.now();
+		Ponto novoPonto = new Ponto(c.getId(), tipo, dataAtual, horarioAtual, localizacao);
 		ultimaJornadaDoUltimoHistoricoMensal.addPonto(novoPonto);
 		return novoPonto;
+	}
+	
+	/***
+	 * <h1>Pegar jornada de trabalho por colaborador e data</h1> </br>
+	 * Retorna uma lista de pontos do colaborador informado referente a data
+	 * informada.
+	 * 
+	 * @param colaborador Colaborador, referente ao colaborador a serconsultado.
+	 * @param data        LocalDate, referente a data informada.
+	 * @return ArrayList<Ponto> referente aos pontos.
+	 */
+	public static ArrayList<Ponto> pegarPontosDeUmaJornadaPorColaboradorEData(Colaborador colaborador, LocalDate data) {
+
+		ArrayList<Ponto> todosOsPontos = PontoLogica.pegarTodosOsPontos();
+		ArrayList<Ponto> pontosDaJornada = new ArrayList<Ponto>();
+
+		for (Ponto ponto : todosOsPontos) {
+			if (ponto.getIdColaborador() == colaborador.getId() && ponto.getData().equals(data)) {
+				pontosDaJornada.add(ponto);
+			}
+		}
+		return pontosDaJornada;
 	}
 
 }
