@@ -17,18 +17,6 @@ public class ColaboradorTest {
 		Ponto ultimoPonto = ultimaJornadaDoUltimoHistoricoMensal.getPontos()
 				.get(ultimaJornadaDoUltimoHistoricoMensal.getPontos().size() - 1);
 		assertEquals(ultimoPonto, novoPonto);
-	}
-	
-	@Test
-	public void testSalvarNovaJustificativa() {
-		Colaborador colaborador = new Colaborador(01, 01, false);
-		Justificativa novaJustificativa = new Justificativa(01, "data", "mensagem", "imagem");
-		colaborador.salvarJustificativa(novaJustificativa);
-		HistoricoMensal<Justificativa> ultimoHistoricoMensalDeJustificativas = colaborador.getJustificativas().get(colaborador.getJustificativas().size() - 1);
-		Justificativa ultimaJustificativa = ultimoHistoricoMensalDeJustificativas.getObjetos().get(ultimoHistoricoMensalDeJustificativas.getObjetos().size() - 1);
-		assertEquals(ultimaJustificativa, novaJustificativa);
-
-	}
-	
+	}	
 
 }

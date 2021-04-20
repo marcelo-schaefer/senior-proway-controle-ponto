@@ -10,7 +10,6 @@ public class Colaborador extends Pessoa {
 	private Integer idTime;
 	private Integer idTurno;
 	private boolean ehGerente;
-	private boolean ehAtivo;
 	private ArrayList<HistoricoMensal<Justificativa>> justificativas;
 	private ArrayList<HistoricoMensal<JornadaDeTrabalho>> jornadas;
 
@@ -52,6 +51,14 @@ public class Colaborador extends Pessoa {
 		ultimaJornadaDoUltimoHistoricoMensal.addPonto(novoPonto);
 		return novoPonto;
 	}
+	
+	public Justificativa salvarJustificativa(Justificativa novaJustificativa) {
+		JustificativaLogica novaJustificativaLogica = new JustificativaLogica(novaJustificativa);		
+		novaJustificativaLogica.cadastrarJustificativa(novaJustificativa);
+		HistoricoMensal<Justificativa> ultimoHistoricoMensalDeJustificativas = justificativas.get(justificativas.size() - 1);
+		ultimoHistoricoMensalDeJustificativas.getObjetos().add(novaJustificativa);
+		return novaJustificativa;
+	}
 
 	public Integer getIdTurno() {
 		return idTurno;
@@ -72,20 +79,11 @@ public class Colaborador extends Pessoa {
 	public ArrayList<HistoricoMensal<Justificativa>> getJustificativas() {
 		return justificativas;
 	}
-	public HistoricoMensal<Justificativa> getUltimoMesJustificativas(){
-		
-		HistoricoMensal<Justificativa> ultimoMesJustificativas;
-		ultimoMesJustificativas = this.justificativas.get(justificativas.size()-1);
-		return ultimoMesJustificativas;
-	}
 
 	public void setJustificativas(ArrayList<HistoricoMensal<Justificativa>> justificativas) {
 		this.justificativas = justificativas;
 	}
-	public void adicionaJustificativa(Justificativa novaJustificativa) {
-	
-	}
-	
+
 	public ArrayList<HistoricoMensal<JornadaDeTrabalho>> getJornadas() {
 		return jornadas;
 	}
@@ -103,7 +101,6 @@ public class Colaborador extends Pessoa {
 	}
 
 	public boolean isEhAtivo() {
-		
 		return ehAtivo;
 	}
 
