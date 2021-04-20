@@ -15,12 +15,13 @@ public class Ponto {
 		super();
 	}
 	
-	public Ponto(Integer id, TipoDePonto tipoDePonto, LocalDate data, String localizacao) {
+	public Ponto(Integer id, TipoDePonto tipoDePonto, LocalDate data, LocalDateTime horario, String localizacao) {
 		super();
 		this.id = id;
 		this.setTipoDePonto(tipoDePonto);
 		this.data = data;
 		this.localizacao = localizacao;
+		this.horario = horario;
 	}
 
 	public Integer getId() {

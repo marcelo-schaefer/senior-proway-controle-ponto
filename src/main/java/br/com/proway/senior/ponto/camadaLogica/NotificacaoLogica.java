@@ -47,7 +47,8 @@ public class NotificacaoLogica {
 		for (Colaborador colaborador : listaColaborador) {
 			LocalDate dataDeHoje = LocalDate.of(2021, 1, 1);
 
-			ArrayList<Ponto> listaPontos = pegarJornadaPorColaboradorEData(colaborador, dataDeHoje);
+			ArrayList<Ponto> listaPontos = PontoLogica.pegarPontosDeUmaJornadaPorColaboradorEData(colaborador,
+					dataDeHoje);
 
 			if (listaPontos.size() % 2 == 0) {
 
@@ -93,33 +94,7 @@ public class NotificacaoLogica {
 		return colaboradores;
 	}
 
-	public ArrayList<Ponto> ordenarPontosPorData(ArrayList<Ponto> listaPonto) {
-		ArrayList<Ponto> aa = new ArrayList<Ponto>();
-		return aa;
-	}
-
-	/***
-	 * <h1>Pegar jornada de trabalho por colaborador e data</h1> </br>
-	 * Retorna uma lista de pontos do colaborador informado referente a data
-	 * informada.
-	 * 
-	 * @param colaborador Colaborador, referente ao colaborador a serconsultado.
-	 * @param data        LocalDate, referente a data informada.
-	 * @return ArrayList<Ponto> referente aos pontos.
-	 */
-	public static ArrayList<Ponto> pegarJornadaPorColaboradorEData(Colaborador colaborador, LocalDate data) {
-
-		ArrayList<Ponto> todosOsPontos = PontoLogica.pegarTodosOsPontos();
-		ArrayList<Ponto> pontosDaJornada = new ArrayList<Ponto>();
-
-		for (Ponto ponto : todosOsPontos) {
-			if (ponto.getIdColaborador() == colaborador.getId() && ponto.getData().equals(data)) {
-				pontosDaJornada.add(ponto);
-			}
-		}
-		return pontosDaJornada;
-	}
-
+	
 	/**
 	 * <h1>Envia notificacao</h1> </br>
 	 * Responsavel por enviar uma mensagem em formato de String para um usuario
@@ -131,13 +106,15 @@ public class NotificacaoLogica {
 	 * @param id            Integer, referente ao destinatário da mensagem.
 	 * @return boolean representando o sucesso da operacao (true/false)
 	 */
-	/*
-	 * public boolean enviarNotificacao(Pessoa entidadePessoa, String mensagem,
-	 * Integer id) { if (checarDestinatario(entidadePessoa, id) == true &&
-	 * checarValidadeMensagem(mensagem) == true) { ArrayList<String> listaMensagem =
-	 * new ArrayList<String>(); listaMensagem.add(mensagem);
-	 * entidadePessoa.setMensagens(listaMensagem); return true; } return false; }
-	 */
+	/*public boolean enviarNotificacao(Pessoa entidadePessoa, String mensagem, Integer id) {
+		if (checarDestinatario(entidadePessoa, id) == true && checarValidadeMensagem(mensagem) == true) {
+			ArrayList<String> listaMensagem = new ArrayList<String>();
+			listaMensagem.add(mensagem);
+			entidadePessoa.setMensagens(listaMensagem);
+			return true;
+		}
+		return false;
+	}*/
 
 	/**
 	 * <h1>Apresenta a lista de mensagens da pessoa.</h1> </br>

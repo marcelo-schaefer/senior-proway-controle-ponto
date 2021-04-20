@@ -1,10 +1,6 @@
 package br.com.proway.senior.ponto.camadaEntidade;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-
-
-import br.com.proway.senior.ponto.camadaLogica.JustificativaLogica;
 
 public class Colaborador extends Pessoa {
 	private Integer idTime;
@@ -16,8 +12,6 @@ public class Colaborador extends Pessoa {
 	private ArrayList<HistoricoMensal<JornadaDeTrabalho>> jornadas;
 	
 	public Colaborador() {}
-
-	public Colaborador() {};
 	
 	public Colaborador(Integer idTime, Integer idTurno, boolean ehGerente) {
 		super();
@@ -113,6 +107,14 @@ public class Colaborador extends Pessoa {
 
 	public void setIdTime(Integer idTime) {
 		this.idTime = idTime;
+	}
+
+	public boolean isEhAtivo() {
+		return ehAtivo;
+	}
+
+	public void setEhAtivo(boolean ehAtivo) {
+		this.ehAtivo = ehAtivo;
 	}
 
 	
